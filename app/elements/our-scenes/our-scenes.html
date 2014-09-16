@@ -4,13 +4,15 @@
 <link rel="import" href="../../elements/our-quizcard/our-quizcard.html">
 <link rel="import" href="../../elements/our-quiz/our-quiz.html">
 <link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
+<link rel="import" href="elements.html">
 
-<polymer-element name="our-scenes" attributes="" vertical layout center center-justified>
+
+<polymer-element name="our-scenes" attributes="">
 <template>
   <core-ajax url="https://kwistet.firebaseio.com/.json" handleAs="json" id="getAjax" on-core-response="{{handleResponse}}" auto></core-ajax>
   <link rel="stylesheet" href="our-scenes.css">
   <core-animated-pages fit selected="" id="scenes">
-  <section vertical layout center>
+  <section vertical layout center center-justified>
     <h1>Welkom bij kwister</h1>
 
     <h2>Kies een quiz</h2>
@@ -23,7 +25,7 @@
   </core-selector>
 </section>
 <section>
-  <our-quiz quizObject="{{quizObject}}" id="ourquiz"></our-quiz>
+  <our-quiz quizObject="{{quizObject}}" id="ourquiz" fit></our-quiz>
 </section>
 </core-animated-pages>
 </template>
