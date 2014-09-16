@@ -1,6 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
-<polymer-element name="our-opgave" attributes="">
+<polymer-element name="our-opgave" attributes="vragen">
   <template>
     <link rel="stylesheet" href="our-opgave.css">
   </template>
@@ -9,7 +9,11 @@
       'use strict';
 
       Polymer({
-        // define element prototype here
+        ready: function(){
+        console.log(this.vragen);
+      }
+
+
       });
 
     })();
