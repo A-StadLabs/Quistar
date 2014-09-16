@@ -5,10 +5,8 @@
   display: block;
   background-color: #FF9D00;
   border: 2px solid #2E475C;
-  border-radius: 25px;
-  padding: 10px 10px 10px 10px;
   color: #2E475C;
-  min-width: 500px;
+
 
   -webkit-transition: background-color 0.25s ease-in-out;
   -moz-transition: background-color 0.25s ease-in-out;
@@ -20,17 +18,59 @@
 
 :host(:hover) {
   	background-color: white;
+}
 
+
+
+
+/* !!! RESPONSIVE: desktop;*/ 
+@media screen and (max-width:4080px) {
+
+:host {
+  border-radius: 25px;
+  padding: 10px 10px 10px 10px;
+  min-width: 500px;
 
 }
+
 
 :host h1{
 	font-weight: 100;
 	font-size: 150%;
-};
+}
 
 
 :host p{
 		font-size: 20%;
-	
-};
+}
+
+
+}
+
+
+
+
+
+/* !!! RESPONSIVE: phone;*/ 
+
+@media screen and (max-width:480px) {
+
+:host {
+  border-radius: 15px;
+  padding: 4px 4px 4px 4px;
+  min-width: 310px;
+
+}
+
+
+:host h1{
+	font-weight: 100;
+	font-size: 120%;
+}
+
+
+:host p{
+		font-size: 20%;
+}
+
+}
