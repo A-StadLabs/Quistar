@@ -1,0 +1,9 @@
+{
+  "firebase": "kwistet",
+  "public": "app/",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

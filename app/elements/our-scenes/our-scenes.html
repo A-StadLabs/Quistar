@@ -1,0 +1,27 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="../../elements/our-quizcard/our-quizcard.html">
+
+<polymer-element name="our-scenes" attributes="" vertical layout center center-justified>
+  <template>
+    <core-ajax url="https://kwistet.firebaseio.com/.json" handleAs="json" id="getAjax" on-core-response="{{handleResponse}}" auto></core-ajax>
+    <link rel="stylesheet" href="our-scenes.css">
+    <h1>Welkom bij kwister</h1>
+    <template repeat="{{ quiz, i in quizzes }}">
+      <our-quizcard quizTitel="{{ quiz.quiztitel }}" quizDescr="{{ quiz.quizdescr }}" quizId="{{ i }}"></our-quizcard>
+    </template>
+  </template>
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        // define element prototype here
+        handleResponse: function(e){
+          this.quizzes = e.detail.response;
+        },
+      });
+
+    })();
+  </script>
+</polymer-element>
