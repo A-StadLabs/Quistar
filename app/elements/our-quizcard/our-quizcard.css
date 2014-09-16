@@ -3,17 +3,25 @@
 
 :host {
   display: block;
-  background-color: orange;
+  background-color: #FF9D00;
   border: 2px solid #2E475C;
   border-radius: 25px;
   padding: 10px 10px 10px 10px;
   color: #2E475C;
   min-width: 500px;
 
+  -webkit-transition: background-color 0.25s ease-in-out;
+  -moz-transition: background-color 0.25s ease-in-out;
+  -ms-transition: background-color 0.25s ease-in-out;
+  -o-transition: background-color 0.25s ease-in-out;
+  transition: background-color 0.25s ease-in-out;
+
 }
 
 :host(:hover) {
-  border: 2px solid white;
+  	background-color: white;
+
+
 }
 
 :host h1{
