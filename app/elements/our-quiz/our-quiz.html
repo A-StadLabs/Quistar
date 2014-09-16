@@ -7,7 +7,7 @@
   <template>
     <link rel="stylesheet" href="our-quiz.css">
     <core-toolbar>
-      <core-icon-button icon="arrow-back">Terug naar quizoverzicht</core-icon-button>
+      <core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}">Terug naar quizoverzicht</core-icon-button>
     </core-toolbar>
     <h1>{{quizObject.quiztitel}}</h1>
     <p>{{quizObject.quizdescr}}</p>
@@ -23,7 +23,11 @@
         // define element prototype here
         quizObjectChanged: function(){
 
-        }
+        },
+
+        quizOverzicht: function(){
+          this.fire('overzicht');
+        },
       });
 
     })();

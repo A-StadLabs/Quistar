@@ -23,7 +23,7 @@
   </core-selector>
 </section>
 <section>
-  <our-quiz quizObject="{{quizObject}}"></our-quiz>
+  <our-quiz quizObject="{{quizObject}}" id="ourquiz"></our-quiz>
 </section>
 </core-animated-pages>
 </template>
@@ -35,6 +35,10 @@
 
         ready: function(){
            this.$.scenes.selected = 0;
+           var that = this;
+           this.$.ourquiz.addEventListener('overzicht', function(){
+              that.$.scenes.selected = 0;
+           });
         },
         // define element prototype here
         handleResponse: function(e){
