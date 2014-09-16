@@ -1,21 +1,47 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
+<link rel="import" href="../../bower_components/core-selector/core-selector.html">
+
 
 <polymer-element name="our-opgave" attributes="vragen">
-  <template>
-    <link rel="stylesheet" href="our-opgave.css">
-  </template>
-  <script>
-    (function () {
-      'use strict';
+<template>
+  <link rel="stylesheet" href="our-opgave.css">
+  <core-animated-pages selected="0" id="opgaveScenes">
 
-      Polymer({
-        ready: function(){
+  <template repeat="{{ vraag, i in vragen }}">
+    <section id="{{i}}">
+      <h1>{{vraag.opgave}}</h1>
+      <core-selector id="antwoordSelector" selected="{{selectedAntwoord}}" valueattr="id" on-core-activate="{{geefAntwoord}}">
+      <template repeat="{{ antwoord, i in vraag.antwoorden }}">
+      <core-icon-button id="{{i}}" antwoord="{{antwoord.antwoord}}">{{ antwoord.antwoord }}</core-icon-button>
+      </template>
+      </core-selector>
+    </section>
+  </template>
+</core-animated-pages>
+
+</template>
+<script>
+  (function () {
+    'use strict';
+
+    Polymer({
+      ready: function(){
+        this.selectedAntwoord = -1;
+      },
+      vragenChanged: function(){
         console.log(this.vragen);
+      },
+      geefAntwoord: function(e){
+        console.log('Antwoord is: ', this.selectedAntwoord);
+        // hier komt de logica om te zien of het antwoord goed of fout is
+        this.$.opgaveScenes.selected++;
+        this.selectedAntwoord = -1;
       }
 
+    });
 
-      });
-
-    })();
-  </script>
+  })();
+</script>
 </polymer-element>

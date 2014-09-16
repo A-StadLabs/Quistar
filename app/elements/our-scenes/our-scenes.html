@@ -4,6 +4,8 @@
 <link rel="import" href="../../elements/our-quizcard/our-quizcard.html">
 <link rel="import" href="../../elements/our-quiz/our-quiz.html">
 <link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
+<link rel="import" href="../../bower_components/core-header-panel/core-header-panel.html">
+
 
 <polymer-element name="our-scenes" attributes="">
 <template>
@@ -11,7 +13,11 @@
   <link rel="stylesheet" href="our-scenes.css">
   <core-animated-pages fit selected="" id="scenes">
   <section vertical layout center center-justified>
+  <core-header-panel mode="waterfall" fit>
+  <div class="core-header">
     <h1>QUISPEL</h1>
+  </div>
+  <div>
 
     <core-selector id="quizSelector" valueattr="quizId" on-core-activate="{{selectQuiz}}">
 
@@ -19,7 +25,10 @@
       <our-quizcard quizTitel="{{ quiz.quiztitel }}" quizDescr="{{ quiz.quizdescr }}" quizId="{{i}}"></our-quizcard>
     </template>
   </core-selector>
+  </div>
+  </core-header-panel>
 </section>
+
 <section>
   <our-quiz quizObject="{{quizObject}}" id="ourquiz" fit></our-quiz>
 </section>
