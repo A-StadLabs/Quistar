@@ -1,6 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
 <link rel="import" href="../../bower_components/core-selector/core-selector.html">
+<link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
 <link rel="import" href="../../elements/our-quizcard/our-quizcard.html">
 <link rel="import" href="../../elements/our-quiz/our-quiz.html">
 <link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
@@ -11,26 +12,24 @@
 <template>
   <core-ajax url="https://kwistet.firebaseio.com/.json" handleAs="json" id="getAjax" on-core-response="{{handleResponse}}" auto></core-ajax>
   <link rel="stylesheet" href="our-scenes.css">
+
+
+
   <core-animated-pages fit selected="" id="scenes">
-  <section vertical layout center center-justified>
-  <core-header-panel mode="waterfall" fit>
-  <div class="core-header">
+  <section vertical layout center fit>
+    <!-- <div id="logo-quispel" src=""></div> -->
     <h1>QUISPEL</h1>
-  </div>
-  <div>
 
     <core-selector id="quizSelector" valueattr="quizId" on-core-activate="{{selectQuiz}}">
-
     <template repeat="{{ quiz, i in quizzes }}">
       <our-quizcard quizTitel="{{ quiz.quiztitel }}" quizDescr="{{ quiz.quizdescr }}" quizId="{{i}}"></our-quizcard>
     </template>
   </core-selector>
-  </div>
-  </core-header-panel>
+
 </section>
 
 <section>
-  <our-quiz quizObject="{{quizObject}}" id="ourquiz" fit></our-quiz>
+  <our-quiz quizObject="{{quizObject}}" id="ourquiz"></our-quiz>
 </section>
 </core-animated-pages>
 </template>
