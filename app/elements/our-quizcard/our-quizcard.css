@@ -1,8 +1,20 @@
 :host {
   display: block;
   border: 2px solid orange;
+  background-color: grey;
 }
 
-:host(:hover); {
+:host(:hover) {
   border: 2px solid black;
 }
+
+:host h1{
+
+
+};
+
+
+:host h1{
+
+	
+};
