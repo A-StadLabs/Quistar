@@ -28,18 +28,25 @@
     Polymer({
       ready: function(){
         this.selectedAntwoord = -1;
+        this.$.opgaveScenes.selected = 0;
       },
       vragenChanged: function(){
-        console.log(this.vragen);
+        //console.log(this.vragen);
       },
       geefAntwoord: function(){
         console.log('Gegeven antwoord is: ', this.selectedAntwoord);
         // hier komt de logica om te zien of het antwoord goed of fout is
         // tot hier dan de logica.
+        if(this.$.opgaveScenes.selected<7){
         this.$.opgaveScenes.selected++;
         this.fire('addscore', {antwoordis: this.selectedAntwoord});
+      } else {
+        this.fire('einde');
+        this.$.opgaveScenes.selected = 0;
+      }
         this.selectedAntwoord = -1;
       }
+      
 
     });
 

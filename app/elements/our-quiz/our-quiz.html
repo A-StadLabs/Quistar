@@ -29,7 +29,10 @@
     </section>
 
     <section>
-    <h1>Leaderboard</h1>
+    <h1>Einde</h1>
+    <h1>Jouw score is {{score}}</h1>
+    <core-icon-button icon="account-circle" on-tap="{{saveScore}}" id="saveScoreButton">Bewaren?</core-icon-button>
+    <core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}">Terug naar quizoverzicht</core-icon-button>
     <our-leaderboard quizId="{{quizObject.quiztitel}}"></our-leaderboard>
     </section>
     </core-animated-pages>
@@ -39,6 +42,12 @@
       'use strict';
 
       Polymer({
+        publish: {
+          quizObject: {
+            value: true,
+            reflect: true
+          }
+        },
         // define element prototype here
         ready: function(){
           this.score = 0;
@@ -51,15 +60,20 @@
           } 
           that.$.countdown.timer = 10;
           });
+          this.$.ouropgave.addEventListener('einde', function(){
+            console.log('gedaan en score is: '+that.score);
+            that.$.quizscenes.selected++;
+          });
         },
         startQuiz: function(){
-          this.$.quizscenes.selected++;
+          this.$.quizscenes.selected = 1;
           this.$.countdown.timer = 10;
           this.$.countdown.start = true;
         },
 
         quizOverzicht: function(){
           this.fire('overzicht');
+          this.$.quizscenes.selected = 0;
         },
       });
 
