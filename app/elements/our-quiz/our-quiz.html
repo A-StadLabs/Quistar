@@ -1,8 +1,9 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
-<polymer-element name="our-quiz" attributes="">
+<polymer-element name="our-quiz" attributes="quizObject">
   <template>
     <link rel="stylesheet" href="our-quiz.css">
+    <h1>De quiz</h1>
   </template>
   <script>
     (function () {
@@ -10,6 +11,11 @@
 
       Polymer({
         // define element prototype here
+        ready: function(){
+
+          console.log(this.quizObject);
+
+        }
       });
 
     })();
