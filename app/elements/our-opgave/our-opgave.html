@@ -20,7 +20,6 @@
     </section>
   </template>
 </core-animated-pages>
-
 </template>
 <script>
   (function () {
@@ -38,6 +37,7 @@
         // hier komt de logica om te zien of het antwoord goed of fout is
         // tot hier dan de logica.
         this.$.opgaveScenes.selected++;
+        this.fire('addscore', {antwoordis: this.selectedAntwoord});
         this.selectedAntwoord = -1;
       }
 

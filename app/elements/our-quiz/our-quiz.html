@@ -3,6 +3,8 @@
 <link rel="import" href="../../bower_components/core-toolbar/core-toolbar.html">
 <link rel="import" href="../../elements/our-leaderboard/our-leaderboard.html">
 <link rel="import" href="../../elements/our-opgave/our-opgave.html">
+<link rel="import" href="../../elements/our-countdown/our-countdown.html">
+
 
 <link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
 
@@ -21,8 +23,9 @@
     </section>
 
     <section>
-    <core-toolbar>Score en tijd</core-toolbar>
-    <our-opgave vragen="{{quizObject.opgaven}}"></our-opgave>
+    <core-toolbar id="controls">Score: {{score}} | Tijd: <our-countdown timer="0" id="countdown"></our-countdown>
+    </core-toolbar>
+    <our-opgave vragen="{{quizObject.opgaven}}" id="ouropgave"></our-opgave>
     </section>
 
     <section>
@@ -37,8 +40,22 @@
 
       Polymer({
         // define element prototype here
+        ready: function(){
+          this.score = 0;
+          this.tijd = 10;
+          var that = this;
+          this.$.ouropgave.addEventListener('addscore', function(e){
+            console.log('antwoord is: '+e.detail.antwoordis);
+            if(e.detail.antwoordis=='true'){
+            that.score = that.score+that.$.countdown.timer;
+          } 
+          that.$.countdown.timer = 10;
+          });
+        },
         startQuiz: function(){
           this.$.quizscenes.selected++;
+          this.$.countdown.timer = 10;
+          this.$.countdown.start = true;
         },
 
         quizOverzicht: function(){

@@ -1,8 +1,9 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 
-<polymer-element name="our-countdown" attributes="">
+<polymer-element name="our-countdown" attributes="timer start">
   <template>
     <link rel="stylesheet" href="our-countdown.css">
+    {{timer}}
   </template>
   <script>
     (function () {
@@ -10,6 +11,24 @@
 
       Polymer({
         // define element prototype here
+        ready: function(){
+          //this.resttijd = 5;
+        },
+
+        startChanged: function(){
+          console.log('timer loopt');
+          
+          var tijd = this.timer;
+          console.log('Tijd is: '+tijd);
+          var that = this;
+          var aftellen = setInterval(function() {
+          if(that.timer>0){
+            that.timer--;
+            // that.resttijd = this.timer;
+            //console.log(that.timer+'hoeveel');
+          };
+        }, 1000);
+        }
       });
 
     })();
