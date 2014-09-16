@@ -3,7 +3,7 @@
 <polymer-element name="our-quiz" attributes="quizObject">
   <template>
     <link rel="stylesheet" href="our-quiz.css">
-    <h1>De quiz</h1>
+    <h1>De Quiz</h1>
   </template>
   <script>
     (function () {
@@ -11,10 +11,8 @@
 
       Polymer({
         // define element prototype here
-        ready: function(){
-
+        quizObjectChanged: function(){
           console.log(this.quizObject);
-
         }
       });
 
