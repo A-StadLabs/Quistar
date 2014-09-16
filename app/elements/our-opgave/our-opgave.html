@@ -3,7 +3,6 @@
 <link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
 <link rel="import" href="../../bower_components/core-selector/core-selector.html">
 
-
 <polymer-element name="our-opgave" attributes="vragen">
 <template>
   <link rel="stylesheet" href="our-opgave.css">
@@ -12,9 +11,9 @@
   <template repeat="{{ vraag, i in vragen }}">
     <section id="{{i}}">
       <h1>{{vraag.opgave}}</h1>
-      <core-selector id="antwoordSelector" selected="{{selectedAntwoord}}" valueattr="id" on-core-activate="{{geefAntwoord}}">
+      <core-selector id="antwoordSelector" selected="{{selectedAntwoord}}" valueattr="antwoord" on-core-activate="{{geefAntwoord}}">
       <template repeat="{{ antwoord, i in vraag.antwoorden }}">
-      <core-icon-button id="{{i}}" antwoord="{{antwoord.antwoord}}">{{ antwoord.antwoord }}</core-icon-button>
+      <core-icon-button id="{{i}}" juiste?="{{antwoord.juist}}" antwoord="{{antwoord.antwoord}}">{{ antwoord.antwoord }}</core-icon-button>
       </template>
       </core-selector>
     </section>
@@ -34,8 +33,10 @@
         console.log(this.vragen);
       },
       geefAntwoord: function(e){
-        console.log('Antwoord is: ', this.selectedAntwoord);
+        console.log('Gegeven antwoord is: ', this.selectedAntwoord);
         // hier komt de logica om te zien of het antwoord goed of fout is
+        console.log('Juiste antwoord is: ', this.juisteAntwoord)
+        // tot hier dan de logica.
         this.$.opgaveScenes.selected++;
         this.selectedAntwoord = -1;
       }
