@@ -1,22 +1,21 @@
 :host {
   display: block;
-  border: 2px solid orange;
-  background-color: grey;
+  background-color: orange;
+  border: 2px solid #2E475C;
+
 }
 
 :host(:hover) {
-  border: 2px solid black;
+  border: 2px solid white;
 }
 
 :host h1{
 	font-weight: 100;
-
-
-
+	font-size: 200%;
 };
 
 
-:host h1{
-
+:host p{
+		font-size: 20%;
 	
 };
