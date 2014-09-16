@@ -7,8 +7,10 @@
   <template>
     <core-ajax url="https://kwistet.firebaseio.com/.json" handleAs="json" id="getAjax" on-core-response="{{handleResponse}}" auto></core-ajax>
     <link rel="stylesheet" href="our-scenes.css">
-    <section>
+    <section vertical layout center>
     <h1>Welkom bij kwister</h1>
+    <h2>Kies een quiz</h2>
+
     <template repeat="{{ quiz, i in quizzes }}">
       <our-quizcard quizTitel="{{ quiz.quiztitel }}" quizDescr="{{ quiz.quizdescr }}" quizId="{{ i }}" on-click="selectQuiz"></our-quizcard>
     </template>

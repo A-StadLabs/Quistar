@@ -1,4 +1,8 @@
 :host {
   display: block;
-  background-color:black;
+  border: 2px solid orange;
+}
+
+:host(:hover); {
+  border: 2px solid black;
 }
