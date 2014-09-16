@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="../../bower_components/core-selector/core-selector.html">
 <link rel="import" href="../../elements/our-quizcard/our-quizcard.html">
 <link rel="import" href="../../elements/our-quiz/our-quiz.html">
 
@@ -9,11 +10,16 @@
     <link rel="stylesheet" href="our-scenes.css">
     <section vertical layout center>
     <h1>Welkom bij kwister</h1>
+
     <h2>Kies een quiz</h2>
 
+
+    <core-selector id="quizSelector" valueattr="quizId" on-core-activate="{{selectQuiz}}">
+
     <template repeat="{{ quiz, i in quizzes }}">
-      <our-quizcard quizTitel="{{ quiz.quiztitel }}" quizDescr="{{ quiz.quizdescr }}" quizId="{{ i }}" on-click="selectQuiz"></our-quizcard>
+      <our-quizcard quizTitel="{{ quiz.quiztitel }}" quizDescr="{{ quiz.quizdescr }}" quizId="{{i}}"></our-quizcard>
     </template>
+    </core-selector>
     </section>
     <section>
     <our-quiz quizObject="{{quizObject}}"></our-quiz>
@@ -30,8 +36,8 @@
         },
 
         selectQuiz: function(){
-          console.log('quiz tapped');
-          this.quizObject = this.quizzes[0];
+          this.quizSelected = this.$.quizSelector.selectedItem.quizId;
+          this.quizObject = this.quizzes[this.quizSelected];
         }
       });
 
