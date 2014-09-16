@@ -5,7 +5,6 @@
 <link rel="import" href="../../elements/our-quiz/our-quiz.html">
 <link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
 
-
 <polymer-element name="our-scenes" attributes="">
 <template>
   <core-ajax url="https://kwistet.firebaseio.com/.json" handleAs="json" id="getAjax" on-core-response="{{handleResponse}}" auto></core-ajax>
@@ -13,7 +12,6 @@
   <core-animated-pages fit selected="" id="scenes">
   <section vertical layout center center-justified>
     <h1>KWISTER!</h1>
-
 
     <core-selector id="quizSelector" valueattr="quizId" on-core-activate="{{selectQuiz}}">
 
