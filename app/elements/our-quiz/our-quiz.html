@@ -1,21 +1,36 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
 <link rel="import" href="../../bower_components/core-toolbar/core-toolbar.html">
-<link rel="import" href="our-fonts/our-fonts.html">
+
+
 <link rel="import" href="elements.html">
+
+<link rel="import" href="../../elements/our-leaderboard/our-leaderboard.html">
+<link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
+
 
 
 <polymer-element name="our-quiz" attributes="quizObject" vertical layout center center-justified>
   <template>
     <link rel="stylesheet" href="our-quiz.css">
+    <section>
     <core-toolbar>
       <core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}">Terug naar quizoverzicht</core-icon-button>
     </core-toolbar>
     <h1>{{quizObject.quiztitel}}</h1>
     <p>{{quizObject.quizdescr}}</p>
-    
     <core-icon-button icon="menu">Start de quiz</core-icon-button>
+    <our-leaderboard quizId="{{quizObject.quiztitel}}"></our-leaderboard>
+    </section>
 
+    <section>
+    opgaves
+    </section>
+
+    <section>
+    <h1>Leaderboard</h1>
+    <our-leaderboard quizId="{{quizObject.quiztitel}}"></our-leaderboard>
+    </section>
   </template>
   <script>
     (function () {
