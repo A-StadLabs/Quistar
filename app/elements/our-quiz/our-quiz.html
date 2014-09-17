@@ -32,6 +32,7 @@
     <h1>Einde</h1>
     <h1>Jouw score is {{score}}</h1>
     <core-icon-button icon="account-circle" on-tap="{{saveScore}}" id="saveScoreButton">Bewaren?</core-icon-button>
+    <p>Jouw A-profiel op de wall of fame</p>
     <core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}">Terug naar quizoverzicht</core-icon-button>
     <our-leaderboard quizId="{{quizObject.quiztitel}}"></our-leaderboard>
     </section>
@@ -66,6 +67,7 @@
           });
         },
         startQuiz: function(){
+          this.score = 0;
           this.$.quizscenes.selected = 1;
           this.$.countdown.timer = 10;
           this.$.countdown.start = true;
