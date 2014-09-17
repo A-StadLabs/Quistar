@@ -22,16 +22,6 @@
   color: #dfdfdf;
 }
 
-.collapsed {
-  font-size: 0.8em;
-  width: 80%;
-}
-
-core-collapse {
-    background-color: #e8e8e8;
-    color: #333333;
-}
-
 .quizcardcontainer {
   padding: 10px;
 }

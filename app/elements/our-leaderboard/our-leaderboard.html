@@ -8,9 +8,18 @@
 
   <firebase-element id="base" location="https://kwistet.firebaseio.com/{{quizId}}/leaderboard/" data="{{data}}" keys="{{keys}}" on-data-change="{{readData}}"></firebase-element>
 
+<div class="card">
+<span class="center"><h1>Wall of fame</h1></span>
 <template repeat="{{key in keys}}">
-  <p>{{data[key].naam}} | {{data[key].score}}</p>
-</template>
+<div horizontal layout center class="quizcardcontainer">
+      <div>
+        <img class="avatar" src="../../images/users/tom.jpg">
+      </div>
+      <div flex>{{data[key].naam}}</div>
+      <div>{{data[key].score}}</div>
+    </div>
+    </template>
+    </div>
   
   </template>
   <script>

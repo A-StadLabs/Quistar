@@ -1,57 +1,56 @@
 :host {
   display: block;
-  background-color: #333333;
+  background-color: #333333 !important;
 }
 
-
+#quizscenes {
+	background-color: #333333;
+}
 
 #controls {
   background-color: #2E475C;
 }
-
-
 
 #score-add {
 	background-color: #2E475C;
 }
 
 core-toolbar {
-	background-color: #B5A3B3;
+	background-color: #B5A3B0;
+	font-size: 1em;
+}
+
+core-icon-button {
+	color: white;
+}
+
+.heading {
+
 }
 
 .card {
-	background-color: white;
+	background-color: #E93D55;
+	border-radius:10px;
 	width: 80%;
+	height: 100%;
 	padding: 20px;
-	color: #333333;
+	color: white;
 	margin-bottom: 20px;
 	margin-top: 20px;
 	margin-right: auto;
 	margin-left: auto;
+
 }
 
-#puntenerbij[test] {
-
--webkit-animation: cssAnimation 2.5s 1 ease;
--moz-animation: cssAnimation 2.5s 1 ease;
--o-animation: cssAnimation 2.5s 1 ease;
-}
-
-
-
-@-webkit-keyframes cssAnimation {
-0% { 	-webkit-transform: translate(100px,0px); }
-100% { 			-webkit-transform: translate(0px,0px);}
+h1 { 
+	font-size: 1.3em;
 }
 
 
-
-@-moz-keyframes cssAnimation {
-0% { -moz-transform: translate(100px,0px); }
-100% { -moz-transform: translate(0px,0px); }
+.quizcardcontainer {
+  padding: 10px;
 }
 
-@-o-keyframes cssAnimation {
-0% { -o-transform: translate(100px,0px); }
-100% { -o-transform: translate(0px,0px); }
+.center {
+	text-align: center;
 }

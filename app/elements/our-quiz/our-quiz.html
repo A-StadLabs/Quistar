@@ -6,6 +6,7 @@
 <link rel="import" href="../../elements/our-countdown/our-countdown.html">
 <link rel="import" href="../../elements/our-leaderentry/our-leaderentry.html">
 <link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
+<link rel="import" href="../../bower_components/core-header-panel/core-header-panel.html">
 <link rel="import" href="../../bower_components/core-animated-pages/transitions/slide-from-right.html">
 <link rel="import" href="../../bower_components/core-animated-pages/transitions/cross-fade.html">
 
@@ -14,22 +15,31 @@
     <link rel="stylesheet" href="our-quiz.css">
     <core-animated-pages id="quizscenes" selected="0" fit transitions="slide-from-right">
     <section>
+    <core-header-panel mode="waterfall" fit>
     <core-toolbar>
-    <div horizontal center-justified layout>
-      <core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}">Terug</core-icon-button>
+    <div vertical layout>
+      <div><core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}">Terug</core-icon-button>
+      </div>
+      <div flex class="heading">
+        
+      </div>
     </div>
-    <div flex horizontal center-justified layout>{{quizObject.quiztitel}}</div>
+    <div flex horizontal center-justified layout></div>
     </core-toolbar>
 
     <div class="card">
-    <h1>{{quizObject.quiztitel}}</h1>
-    <p>{{quizObject.quizdescr}}</p>
-    <core-icon-button icon="menu" on-tap="{{startQuiz}}">Start de quiz</core-icon-button>
+      <div class="quizcardcontainer">
+      <h1>{{quizObject.quiztitel}}</h1>
+      <p>{{quizObject.quizdescr}}</p>
+      <core-icon-button icon="arrow-forward" on-tap="{{startQuiz}}">Start de quiz</core-icon-button>
+      </div>
+
     </div>
 
-    <div class="card">
+    <div>
     <our-leaderboard quizobject="{{quizObject.leaderboard}}" quizId="{{quizId}}"></our-leaderboard>
     </div>
+    </core-header-panel>
     </section>
 
     <section>
