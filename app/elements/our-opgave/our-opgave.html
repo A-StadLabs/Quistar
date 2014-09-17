@@ -2,12 +2,17 @@
 <link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
 <link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
 <link rel="import" href="../../bower_components/core-selector/core-selector.html">
+<!--
+<link rel="import" href="../../bower_components/core-animated-pages/slide-from-right.html">
+<link rel="import" href="../../bower_components/core-animated-pages/cross-fade.html">
+-->
+<link rel="import" href="../../bower_components/core-animated-pages/transitions/slide-up.html">
 
 <polymer-element name="our-opgave" attributes="vragen">
 
 <template>
   <link rel="stylesheet" href="our-opgave.css">
-  <core-animated-pages selected="0" id="opgaveScenes" fit >
+  <core-animated-pages selected="0" id="opgaveScenes" fit transitions="slide-from-right">
 
   <template repeat="{{ vraag, i in vragen }}">
     <section id="{{i}}" vertical layout center center-justified fit>
