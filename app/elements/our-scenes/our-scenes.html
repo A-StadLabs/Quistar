@@ -6,14 +6,17 @@
 <link rel="import" href="../../elements/our-quizcard/our-quizcard.html">
 <link rel="import" href="../../elements/our-quiz/our-quiz.html">
 <link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
+<link rel="import" href="../../bower_components/core-animated-pages/transitions/slide-from-right.html">
+<link rel="import" href="../../bower_components/core-animated-pages/transitions/cross-fade.html">
 <link rel="import" href="../../bower_components/core-header-panel/core-header-panel.html">
+
 
 
 <polymer-element name="our-scenes" attributes="">
 <template>
   <core-ajax url="https://kwistet.firebaseio.com/.json" handleAs="json" id="getAjax" on-core-response="{{handleResponse}}" auto></core-ajax>
   <link rel="stylesheet" href="our-scenes.css">
-  <core-animated-pages fit selected="" id="scenes">
+  <core-animated-pages fit selected="" id="scenes" transitions="slide-from-right">
   <section vertical layout center>
     <!-- <div id="logo-quispel" src=""></div> -->
     <h1>QUISPEL</h1>
@@ -23,7 +26,6 @@
       <our-quizcard quizTitel="{{ quiz.quiztitel }}" quizDescr="{{ quiz.quizdescr }}" quizId="{{i}}"></our-quizcard>
     </template>
           <p>Een productie van AStadLabs</p>
-
   </core-selector>
 
 
