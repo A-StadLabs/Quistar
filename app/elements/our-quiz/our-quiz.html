@@ -8,11 +8,11 @@
 
 <link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
 
-<polymer-element name="our-quiz" attributes="quizObject" vertical layout center center-justified>
+<polymer-element name="our-quiz" attributes="quizObject">
   <template>
     <link rel="stylesheet" href="our-quiz.css">
     <core-animated-pages id="quizscenes" selected="0" fit>
-    <section>
+    <section vertical layout center center-justified>
     <core-toolbar>
       <core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}">Terug naar quizoverzicht</core-icon-button>
     </core-toolbar>
@@ -23,12 +23,12 @@
     </section>
 
     <section>
-    <core-toolbar id="controls">Score: {{score}} | Tijd: <our-countdown timer="0" id="countdown"></our-countdown>
+    <core-toolbar id="controls"><div flex>Score: {{score}} </div> Tijd: <our-countdown timer="0" id="countdown"></our-countdown>
     </core-toolbar>
     <our-opgave vragen="{{quizObject.opgaven}}" id="ouropgave"></our-opgave>
     </section>
 
-    <section>
+    <section vertical layout center center-justified>
     <h1>Einde</h1>
     <h1>Jouw score is {{score}}</h1>
     <core-icon-button icon="account-circle" on-tap="{{saveScore}}" id="saveScoreButton">Bewaren?</core-icon-button>
