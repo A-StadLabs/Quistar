@@ -1,9 +1,11 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-collapse/core-collapse.html">
 
-<polymer-element name="our-quizcard" attributes="quizTitel quizDescr quizId">
+
+<polymer-element name="our-quizcard" attributes="quizTitel quizDescr quizId qcOpen">
   <template>
     <link rel="stylesheet" href="our-quizcard.css">
-    <div horizontal layout center on-tap="{{open}}">
+    <div horizontal layout center class="quizcardcontainer">
       <div flex>
           {{quizTitel}}
       </div>
@@ -19,6 +21,17 @@
 
       Polymer({
         // define element prototype here
+        ready: function(){
+          this.qcOpen = '';
+          this.addEventListener('closeAll', function(){
+            this.$.collapse.toggle();
+            console.log('I heard you.');
+          })
+        },
+
+        startQuiz: function(){
+          this.fire('startquiz');
+        }
 
       });
 

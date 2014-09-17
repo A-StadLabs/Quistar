@@ -1,5 +1,6 @@
 :host {
   display: block;
+  background-color: #333333;
 }
 
 
@@ -14,6 +15,20 @@
 	background-color: #2E475C;
 }
 
+core-toolbar {
+	background-color: #B5A3B3;
+}
+
+.card {
+	background-color: white;
+	width: 80%;
+	padding: 20px;
+	color: #333333;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	margin-right: auto;
+	margin-left: auto;
+}
 
 #puntenerbij[test] {
 

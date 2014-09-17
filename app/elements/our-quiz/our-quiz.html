@@ -13,14 +13,23 @@
   <template>
     <link rel="stylesheet" href="our-quiz.css">
     <core-animated-pages id="quizscenes" selected="0" fit transitions="slide-from-right">
-    <section vertical layout center center-justified>
+    <section>
     <core-toolbar>
-      <core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}">Terug naar quizoverzicht</core-icon-button>
+    <div horizontal center-justified layout>
+      <core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}">Terug</core-icon-button>
+    </div>
+    <div flex horizontal center-justified layout>{{quizObject.quiztitel}}</div>
     </core-toolbar>
+
+    <div class="card">
     <h1>{{quizObject.quiztitel}}</h1>
     <p>{{quizObject.quizdescr}}</p>
     <core-icon-button icon="menu" on-tap="{{startQuiz}}">Start de quiz</core-icon-button>
+    </div>
+
+    <div class="card">
     <our-leaderboard quizobject="{{quizObject.leaderboard}}" quizId="{{quizId}}"></our-leaderboard>
+    </div>
     </section>
 
     <section>
