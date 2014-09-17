@@ -3,12 +3,15 @@
 <link rel="import" href="../../bower_components/core-selector/core-selector.html">
 <link rel="import" href="../../bower_components/core-item/core-item.html">
 <link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../../bower_components/core-icon/core-icon.html">
 <link rel="import" href="../../elements/our-quizcard/our-quizcard.html">
 <link rel="import" href="../../elements/our-quiz/our-quiz.html">
 <link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
 <link rel="import" href="../../bower_components/core-animated-pages/transitions/slide-from-right.html">
 <link rel="import" href="../../bower_components/core-animated-pages/transitions/cross-fade.html">
 <link rel="import" href="../../bower_components/core-header-panel/core-header-panel.html">
+<link rel="import" href="../../bower_components/core-collapse/core-collapse.html">
+
 
 
 
@@ -19,15 +22,21 @@
   <core-animated-pages fit selected="" id="scenes" transitions="slide-from-right">
   <section vertical layout center>
     <!-- <div id="logo-quispel" src=""></div> -->
-    <h1>QUISPEL</h1>
-    <p>kies een quiz</p>
-    <core-selector id="quizSelector" valueattr="quizId" on-core-activate="{{selectQuiz}}">
+    <core-header-panel fit mode="waterfall">
+    <div class="core-header" vertical layout center>
+      <!-- <core-icon src="../../images/hongt.svg" class="big"></core-icon> -->
+      <h1>Quispel</h1>
+    </div>
+    <div>
+    <!-- <core-selector id="quizSelector" valueattr="quizId" on-core-activate="{{selectQuiz}}"> -->
+    <core-selector id="quizSelector" valueattr="quizId">
     <template repeat="{{ quiz, i in quizzes }}">
       <our-quizcard quizTitel="{{ quiz.quiztitel }}" quizDescr="{{ quiz.quizdescr }}" quizId="{{i}}"></our-quizcard>
+      <core-collapse></core-collapse>
     </template>
-          <p>Een productie van AStadLabs</p>
   </core-selector>
-
+  </div>
+  </div>
 
 </section>
 <section vertical layout center fit>

@@ -17,6 +17,9 @@
       'use strict';
 
       Polymer({
+        ready: function(){
+          
+        },
         // define element prototype here
         addLeaderboard: function(){
         //ajax.go();
@@ -27,6 +30,7 @@
         this.data = JSON.stringify(this.data);
         this.$.entryPost.body = this.data;
         this.$.entryPost.go();
+        this.hidden = true;
       }
       });
 

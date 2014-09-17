@@ -24,7 +24,7 @@
     </section>
 
     <section>
-    <core-toolbar id="controls"><div id="scoreadd">Score: {{score}} </div><div id="puntenerbij" flex test>+100</div> Tijd: <our-countdown timer="0" id="countdown"></our-countdown>
+    <core-toolbar id="controls"><div id="scoreadd">Score: {{score}} </div><div id="puntenerbij" flex>+100</div> Tijd: <our-countdown timer="0" id="countdown"></our-countdown>
     </core-toolbar>
     <our-opgave vragen="{{quizObject.opgaven}}" id="ouropgave"></our-opgave>
     </section>
@@ -34,7 +34,7 @@
     <h1>Jouw score is {{score}}</h1>
     
     <p>Jouw A-profiel op de wall of fame</p>
-    <our-leaderentry score="{{score}}" quizobject="{{quizObject}}" quizId="{{quizId}}"></our-leaderentry>
+    <our-leaderentry id="leaderentry" score="{{score}}" quizobject="{{quizObject}}" quizId="{{quizId}}"></our-leaderentry>
 
     <core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}">Terug naar quizoverzicht</core-icon-button>
     <our-leaderboard quizobject="{{quizObject.leaderboard}}" quizId="{{quizId}}"></our-leaderboard>
@@ -60,7 +60,7 @@
           this.$.ouropgave.addEventListener('addscore', function(e){
             if(e.detail.antwoordis=='true'){
             that.score = that.score+that.$.countdown.timer;
-            that.$.puntenerbij.setAttribute('active');
+            that.$.puntenerbij.test = true;
           } 
           that.$.countdown.timer = 10;
           });
@@ -70,6 +70,7 @@
         },
         startQuiz: function(){
           this.score = 0;
+          this.$.leaderentry.hidden = false;
           this.$.quizscenes.selected = 1;
           this.$.countdown.timer = 10;
           this.$.countdown.start = true;
