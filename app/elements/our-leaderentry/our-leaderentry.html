@@ -4,8 +4,8 @@
 <polymer-element name="our-leaderentry" attributes="score quizobject quizId">
   <template>
     <link rel="stylesheet" href="our-leaderentry.css">
-    <!-- <core-ajax method="POST" id="entryPost" handleAs="json" data url="https://kwistet.firebaseio.com/{{quizId}}/leaderboard.json">
-</core-ajax> -->
+    <core-ajax method="POST" id="entryPost" handleAs="json" data url="https://kwistet.firebaseio.com/{{quizId}}/leaderboard.json">
+</core-ajax>
 
     <form>
       <input type="text" value="jouw naam" id="naam">
@@ -20,14 +20,12 @@
         // define element prototype here
         addLeaderboard: function(){
         //ajax.go();
-        console.log('Ik ga ',this.score,' toevoegen aan ',this.quizId);
         this.naam = this.$.naam.value;
         this.data = { "naam": this.naam,
                       "score": this.score
                     };
         this.data = JSON.stringify(this.data);
         this.$.entryPost.body = this.data;
-        console.log(this.$.entryPost.body);
         this.$.entryPost.go();
       }
       });

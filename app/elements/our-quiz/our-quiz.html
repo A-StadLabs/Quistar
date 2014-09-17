@@ -37,7 +37,7 @@
     <our-leaderentry score="{{score}}" quizobject="{{quizObject}}" quizId="{{quizId}}"></our-leaderentry>
 
     <core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}">Terug naar quizoverzicht</core-icon-button>
-    <our-leaderboard quizobject="{{quizObject.leaderboard}}"></our-leaderboard>
+    <our-leaderboard quizobject="{{quizObject.leaderboard}}" quizId="{{quizId}}"></our-leaderboard>
     </section>
     </core-animated-pages>
   </template>
@@ -58,19 +58,16 @@
           this.tijd = 10;
           var that = this;
           this.$.ouropgave.addEventListener('addscore', function(e){
-            console.log('antwoord is: '+e.detail.antwoordis);
             if(e.detail.antwoordis=='true'){
             that.score = that.score+that.$.countdown.timer;
           } 
           that.$.countdown.timer = 10;
           });
           this.$.ouropgave.addEventListener('einde', function(){
-            console.log('gedaan en score is: '+that.score);
             that.$.quizscenes.selected++;
           });
         },
         startQuiz: function(){
-          console.log('Quiz start ',this.quizId);
           this.score = 0;
           this.$.quizscenes.selected = 1;
           this.$.countdown.timer = 10;
@@ -81,6 +78,9 @@
           this.fire('overzicht');
           this.$.quizscenes.selected = 0;
         },
+
+        quizObjectChanged: function(){
+        }
       });
 
     })();
