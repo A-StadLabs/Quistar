@@ -14,7 +14,7 @@
   <core-ajax url="https://kwistet.firebaseio.com/.json" handleAs="json" id="getAjax" on-core-response="{{handleResponse}}" auto></core-ajax>
   <link rel="stylesheet" href="our-scenes.css">
   <core-animated-pages fit selected="" id="scenes">
-  <section vertical layout center fit>
+  <section vertical layout center>
     <!-- <div id="logo-quispel" src=""></div> -->
     <h1>QUISPEL</h1>
     <p>kies een quiz</p>
@@ -22,8 +22,10 @@
     <template repeat="{{ quiz, i in quizzes }}">
       <our-quizcard quizTitel="{{ quiz.quiztitel }}" quizDescr="{{ quiz.quizdescr }}" quizId="{{i}}"></our-quizcard>
     </template>
+          <p>Een productie van AStadLabs</p>
+
   </core-selector>
-      <p>Een AStadLabs experiment</p>
+
 
 </section>
 <section vertical layout center fit>
