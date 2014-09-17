@@ -18,7 +18,7 @@
     <h1>{{quizObject.quiztitel}}</h1>
     <p>{{quizObject.quizdescr}}</p>
     <core-icon-button icon="menu" on-tap="{{startQuiz}}">Start de quiz</core-icon-button>
-    <our-leaderboard quizobject="{{quizObject.leaderboard}}"></our-leaderboard>
+    <our-leaderboard quizobject="{{quizObject.leaderboard}}" quizId="{{quizId}}"></our-leaderboard>
     </section>
 
     <section>
@@ -35,7 +35,7 @@
     <our-leaderentry score="{{score}}" quizobject="{{quizObject}}" quizId="{{quizId}}"></our-leaderentry>
 
     <core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}">Terug naar quizoverzicht</core-icon-button>
-    <our-leaderboard quizobject="{{quizObject.leaderboard}}" quizId="{{quizId}}"></our-leaderboard>
+    <our-leaderboard quizobject="{{quizObject.leaderboard}}"></our-leaderboard>
     </section>
     </core-animated-pages>
   </template>

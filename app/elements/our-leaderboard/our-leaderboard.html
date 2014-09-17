@@ -1,11 +1,21 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="../../bower_components/firebase-element/firebase-element.html">
 
 <polymer-element name="our-leaderboard" attributes="quizobject quizId">
   <template>
+  <firebase-element id="base" location="https://kwistet.firebaseio.com/{{quizId}}/leaderboard/" data="{{data}}" keys="{{keys}}" on-data-change="{{readData}}"></firebase-element>
+
+<template repeat="{{key in keys}}">
+  <p>{{data[key].naam}} | {{data[key].score}}</p>
+</template>
+  <h1>dsdsd</h1>
     <link rel="stylesheet" href="our-leaderboard.css">
-    <template repeat="{{ leader in leaderboard }}">
-    <h2>{{leader.naam}} | {{leader.score}}</h2>
+    <template repeat="{{ leader in quizobject }}">
+    <h1>TEST</h1>
+    <h2>{{leader.item.naam}} | {{leader.item.score}}</h2>
+    </template>
+    <template repeat="">
     </template>
   </template>
   <script>
@@ -14,12 +24,25 @@
 
       Polymer({
         // define element prototype here
-        quizobjectChanged: function(){
-          console.log('leaderboard: ',this.quizobject);
+        ready: function(){
+          console.log('quizid in our-leaderboard: ',this.quizId);
+          this.leaderboard = {};
           this.leaderboard = this.quizobject;
+        },
+
+        quizobjectChanged: function(){
+          console.log('leaderboard: ',JSON.stringify(this.quizobject));
+          console.log('quizid in our-leaderboard: ',this.quizId);
+          this.leaderboard = this.quizobject;
+        },
+
+        readData: function(){
+          console.log('FB: ',JSON.stringify(this.data));
+
         }
       });
 
     })();
   </script>
 </polymer-element>
+
