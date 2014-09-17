@@ -1,0 +1,32 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+
+<polymer-element name="our-leaderentry" attributes="score quizobject quizId">
+  <template>
+    <link rel="stylesheet" href="our-leaderentry.css">
+    <core-ajax method="POST" id="entryPost" handleAs="json" data url="https://kwistet.firebaseio.com/{{quizId}}/leaderboard.json">
+</core-ajax>
+    <form>
+      <input type="text" value="jouw naam" id="naam">
+        <core-icon-button icon="arrow-forward" on-tap="{{addLeaderboard}}">Toevoegen aan leaderboard</core-icon-button>
+    </form>
+  </template>
+  <script>
+    (function () {
+      'use strict';
+
+      Polymer({
+        // define element prototype here
+        addLeaderboard: function(){
+        //ajax.go();
+        console.log('Ik ga ',this.score,' toevoegen aan ',this.quizId);
+        this.naam = this.$.naam.value;
+        this.$.entryPost.body = '{ "naam": "'+this.naam+'", "score": '+this.score+' }';
+        console.log(this.$.entryPost.body);
+        this.$.entryPost.go();
+      }
+      });
+
+    })();
+  </script>
+</polymer-element>

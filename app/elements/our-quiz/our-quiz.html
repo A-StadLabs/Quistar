@@ -4,9 +4,10 @@
 <link rel="import" href="../../elements/our-leaderboard/our-leaderboard.html">
 <link rel="import" href="../../elements/our-opgave/our-opgave.html">
 <link rel="import" href="../../elements/our-countdown/our-countdown.html">
+<link rel="import" href="../../elements/our-leaderentry/our-leaderentry.html">
 <link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
 
-<polymer-element name="our-quiz" attributes="quizObject">
+<polymer-element name="our-quiz" attributes="quizObject quizId">
   <template>
     <link rel="stylesheet" href="our-quiz.css">
     <core-animated-pages id="quizscenes" selected="0" fit>
@@ -29,10 +30,12 @@
     <section vertical layout center center-justified>
     <h1>Einde</h1>
     <h1>Jouw score is {{score}}</h1>
-    <core-icon-button icon="account-circle" on-tap="{{saveScore}}" id="saveScoreButton">Bewaren?</core-icon-button>
+    
     <p>Jouw A-profiel op de wall of fame</p>
+    <our-leaderentry score="{{score}}" quizobject="{{quizObject}}" quizId="{{quizId}}"></our-leaderentry>
+
     <core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}">Terug naar quizoverzicht</core-icon-button>
-    <our-leaderboard quizobject="{{quizObject.leaderboard}}"></our-leaderboard>
+    <our-leaderboard quizobject="{{quizObject.leaderboard}}" quizId="{{quizId}}"></our-leaderboard>
     </section>
     </core-animated-pages>
   </template>
@@ -65,6 +68,7 @@
           });
         },
         startQuiz: function(){
+          console.log('Quiz start ',this.quizId);
           this.score = 0;
           this.$.quizscenes.selected = 1;
           this.$.countdown.timer = 10;
