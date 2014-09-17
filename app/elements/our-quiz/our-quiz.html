@@ -4,8 +4,6 @@
 <link rel="import" href="../../elements/our-leaderboard/our-leaderboard.html">
 <link rel="import" href="../../elements/our-opgave/our-opgave.html">
 <link rel="import" href="../../elements/our-countdown/our-countdown.html">
-
-
 <link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
 
 <polymer-element name="our-quiz" attributes="quizObject">
@@ -19,7 +17,7 @@
     <h1>{{quizObject.quiztitel}}</h1>
     <p>{{quizObject.quizdescr}}</p>
     <core-icon-button icon="menu" on-tap="{{startQuiz}}">Start de quiz</core-icon-button>
-    <our-leaderboard quizId="{{quizObject.quiztitel}}"></our-leaderboard>
+    <our-leaderboard quizobject="{{quizObject.leaderboard}}"></our-leaderboard>
     </section>
 
     <section>
@@ -34,7 +32,7 @@
     <core-icon-button icon="account-circle" on-tap="{{saveScore}}" id="saveScoreButton">Bewaren?</core-icon-button>
     <p>Jouw A-profiel op de wall of fame</p>
     <core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}">Terug naar quizoverzicht</core-icon-button>
-    <our-leaderboard quizId="{{quizObject.quiztitel}}"></our-leaderboard>
+    <our-leaderboard quizobject="{{quizObject.leaderboard}}"></our-leaderboard>
     </section>
     </core-animated-pages>
   </template>
