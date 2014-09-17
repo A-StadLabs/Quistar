@@ -2,8 +2,15 @@
   display: block;
 }
 
+/*
+:host core-selector{
+	display: block;
+	background-color: red;
+	height: auto;
+}
 
 
+*/
 
 
 /* !!! RESPONSIVE: desktop;*/ 
