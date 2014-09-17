@@ -60,6 +60,7 @@
           this.$.ouropgave.addEventListener('addscore', function(e){
             if(e.detail.antwoordis=='true'){
             that.score = that.score+that.$.countdown.timer;
+            that.$.puntenerbij.setAttribute('active');
           } 
           that.$.countdown.timer = 10;
           });
