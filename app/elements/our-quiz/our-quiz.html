@@ -16,8 +16,8 @@
     <core-animated-pages id="quizscenes" selected="0" fit transitions="slide-from-right">
     <section>
     <core-header-panel mode="waterfall" fit>
-    <core-toolbar>
-    <div vertical layout>
+    <core-toolbar id="backbutton">
+    <div  class="core-header" vertical layout>
       <div><core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}">TERUG</core-icon-button>
       </div>
       <div flex class="heading">
@@ -46,11 +46,10 @@
     <core-header-panel mode="waterfall" fit>
     <core-toolbar id="controls">
     <div vertical layout>
-    <core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}">Andere quiz</core-icon-button>
+    <core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}">ANDERE QUIZ</core-icon-button>
     </div>
-    <div flex class="heading">
-      Score: {{score}} Tijd: <our-countdown timer="0" id="countdown"></our-countdown>
-    </div>
+    <div flex><our-countdown timer="0" id="countdown"></our-countdown></div>
+    <div class="heading">{{score}} </div>
     </core-toolbar>
     <div vertical layout>
     <our-opgave vragen="{{quizObject.opgaven}}" id="ouropgave"></our-opgave>

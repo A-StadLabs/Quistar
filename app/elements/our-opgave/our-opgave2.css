@@ -1,5 +1,6 @@
 :host {
   display: block;
+
 }
 
 
@@ -14,7 +15,7 @@
   margin-right: auto;
   margin-left: auto;
   min-height: 45px;
-  
+
 
 }
 
@@ -36,15 +37,10 @@
 }
 
 .card {
-  background-color: #68BB88;
-  border-radius:10px;
-  width: 80%;
-  padding: 20px;
   color: white;
-  margin-bottom: 20px;
-  margin-top: 20px;
-  margin-right: auto;
-  margin-left: auto;
+    background-color: #68BB88;
+
+
 }
 
 
@@ -54,36 +50,5 @@
   background-color: white;
   width: 100%;
 }
-
-
-
-@media screen and (min-width: 800px) {
-#antwoordSelector {
-  width: 80%;
-  height: 100%;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-
-.card {
-  padding: 0px;
-}
-
-
-:host core-icon-button {
-  border-bottom: 1px solid #CCCCCC;
-  color: #68BB88;
-  font-size: 26px;
-  text-align: center;
-  margin-right: auto;
-  margin-left: auto;
-  min-height: 75px;
-
-}
-
-}
-
-
 
 

@@ -1,23 +1,19 @@
 :host {
   display: block;
-  background-color: #333333 !important;
-
-
+	color: white;
 }
 
 #quizscenes {
 	background-color: #333333;
 }
 
-#controls {
-  background-color: #2E475C;
-}
+
 
 #score-add {
 	background-color: #2E475C;
 }
 
-core-toolbar {
+#backbutton {
 	background-color: #FCC13E;
 }
 
@@ -25,9 +21,19 @@ core-icon-button {
 	color: black;
 }
 
+#controls {
+	background-color: #5CA679;
+
+}
+
+
+
+
 
 
 .heading {
+	color: white;
+	font-weight: 900;
 
 }
 
@@ -35,7 +41,6 @@ core-icon-button {
 	background-color: #68BB88;
 	border-radius:10px;
 	width: 80%;
-	height: 100%;
 	padding: 20px;
 	color: white;
 	margin-bottom: 20px;
@@ -46,20 +51,31 @@ core-icon-button {
 
 }
 
-h1 { 
-	font-size: 44px;
-}
-
-p {
-	font-size: 20px;
-
-}
-
-
 
 .quizcardcontainer {
   padding: 10px;
+	height: 100%;
 }
+
+.quizcardcontainer h1 {
+	font-size: 44px;
+	color: white;
+	 font-weight: 200;
+
+}
+
+
+p {
+	font-size: 20px;
+	font-weight: 200;
+	color:  #47805D;
+
+
+}
+
+
+
+
 
 .center {
 	text-align: center;
