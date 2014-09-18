@@ -15,13 +15,19 @@
   <core-animated-pages selected="0" id="opgaveScenes" fit transitions="slide-from-right">
 
   <template repeat="{{ vraag, i in vragen }}">
-    <section id="{{i}}" vertical layout center center-justified fit>
+    <section id="{{i}}" fit>
+    <div class="card" horizontal layout start>
+      <div class="quizcardcontainer">
       <h1>{{vraag.opgave}}</h1>
+      </div>
+    </div>
+    <div horizontal layout end>
       <core-selector id="antwoordSelector" selected="{{selectedAntwoord}}" valueattr="juiste" on-core-activate="{{geefAntwoord}}" vertical layout center>
       <template repeat="{{ antwoord, i in vraag.antwoorden }}">
       <core-icon-button id="{{i}}" juiste="{{antwoord.juist}}" antwoord="{{antwoord.antwoord}}">{{ antwoord.antwoord }}</core-icon-button>
       </template>
       </core-selector>
+    </div>
     </section>
   </template>
 </core-animated-pages>

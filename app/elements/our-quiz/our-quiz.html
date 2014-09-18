@@ -43,9 +43,19 @@
     </section>
 
     <section>
-    <core-toolbar id="controls"><div id="scoreadd">Score: {{score}} </div><div id="puntenerbij" flex>+100</div> Tijd: <our-countdown timer="0" id="countdown"></our-countdown>
+    <core-header-panel mode="waterfall" fit>
+    <core-toolbar id="controls">
+    <div vertical layout>
+    <core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}">Andere quiz</core-icon-button>
+    </div>
+    <div flex class="heading">
+      Score: {{score}} Tijd: <our-countdown timer="0" id="countdown"></our-countdown>
+    </div>
     </core-toolbar>
+    <div vertical layout>
     <our-opgave vragen="{{quizObject.opgaven}}" id="ouropgave"></our-opgave>
+    </div>
+    </core-header-panel>
     </section>
 
     <section vertical layout center center-justified>
