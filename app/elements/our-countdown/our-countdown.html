@@ -1,9 +1,11 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-progress/paper-progress.html">
+
 
 <polymer-element name="our-countdown" attributes="timer start">
   <template>
     <link rel="stylesheet" href="our-countdown.css">
-    {{timer}}
+    <paper-progress value="{{timer}}" max="10"></paper-progress>
   </template>
   <script>
     (function () {

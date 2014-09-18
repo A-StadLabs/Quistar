@@ -1,0 +1,35 @@
+:host {
+  display: block;
+  color: #333333;
+  background-color: gray;
+}
+
+.container {
+	padding: 20px;
+	display: block;
+}
+
+core-animated-pages {
+	height: auto;
+	width: auto;
+}
+
+h3 { 
+line-height: 0px;
+}
+
+.card {
+	background-color: white !important;
+	display: block;
+	width: 90%;
+	height: auto;
+	color: #333333;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.right {
+	text-align: center;
+}
