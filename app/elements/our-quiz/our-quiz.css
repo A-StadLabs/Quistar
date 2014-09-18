@@ -1,6 +1,8 @@
 :host {
   display: block;
   background-color: #333333 !important;
+
+
 }
 
 #quizscenes {
@@ -16,20 +18,21 @@
 }
 
 core-toolbar {
-	background-color: #A2B361;
-	font-size: 1em;
+	background-color: #FCC13E;
 }
 
 core-icon-button {
-	color: white;
+	color: black;
 }
+
+
 
 .heading {
 
 }
 
 .card {
-	background-color: #A2B361;
+	background-color: #68BB88;
 	border-radius:10px;
 	width: 80%;
 	height: 100%;
@@ -39,12 +42,19 @@ core-icon-button {
 	margin-top: 20px;
 	margin-right: auto;
 	margin-left: auto;
+	text-align: center;
 
 }
 
 h1 { 
-	font-size: 1.3em;
+	font-size: 44px;
 }
+
+p {
+	font-size: 20px;
+
+}
+
 
 
 .quizcardcontainer {

@@ -2,13 +2,17 @@
   display: block;
   color: #333333;
   background-color: white;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid #CCCCCC;
+  font-size: 18px;
+  font-weight: 200;
   cursor: pointer;
+  padding-left: 10px;
+
 }
 
 
 :host(:hover) {
-  	background-color: #C0E245;
+  	background-color: #68BB88;
     color: white;
 }
 
@@ -19,11 +23,13 @@
 }
 
 .gray {
-  color: #dfdfdf;
+  fill: currentColor;
+  color: black;
 }
 
 .quizcardcontainer {
   padding: 10px;
+
 }
 
 core-icon-button {

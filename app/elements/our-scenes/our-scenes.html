@@ -18,16 +18,16 @@
 <template>
   <core-ajax url="https://kwistet.firebaseio.com/.json" handleAs="json" id="getAjax" on-core-response="{{handleResponse}}" auto></core-ajax>
   <link rel="stylesheet" href="our-scenes.css">
-  <core-animated-pages fit selected="" id="scenes" transitions="slide-from-right">
+  <core-animated-pages fit selected="" id="scenes" transitions="slide-from-right" vertical layout center>
   <section vertical layout center>
     <!-- <div id="logo-quispel" src=""></div> -->
     <core-header-panel fit mode="waterfall">
     <div class="core-header" vertical layout center>
       <!-- <core-icon src="../../images/hongt.svg" class="big"></core-icon> -->
-      <h1>Quispel</h1>
+      <h1>QUIST<img class="ster" src="../../images/STER.svg"></img>R</h1>
     </div>
     <div>
-    <core-selector id="quizSelector" valueattr="quizId" on-core-activate="{{selectQuiz}}">
+    <core-selector id="quizSelector" valueattr="quizId" on-core-activate="{{selectQuiz}}" fit>
   
     <template repeat="{{ quiz, i in quizzes }}">
       <our-quizcard quizTitel="{{ quiz.quiztitel }}" quizDescr="{{ quiz.quizdescr }}" quizId="{{i}}"></our-quizcard>
