@@ -6,15 +6,23 @@
   <template>
     <link rel="stylesheet" href="our-leaderentry.css">
 
-<google-signin clientId="719285224024-hfqn4j36nerq1ai5q612qrkq4pnoi6q5.apps.googleusercontent.com" scopes="profile" id="gsign"></google-signin>
+<google-signin width="iconOnly" clientId="719285224024-av2evld3lehrtsh3ef0eki055paumcpr.apps.googleusercontent.com" scopes="profile" id="gsign"></google-signin>
+<!-- <google-signin theme="dark" width="iconOnly" clientId="719285224024-av2evld3lehrtsh3ef0eki055paumcpr.apps.googleusercontent.com" scopes="https://www.googleapis.com/auth/plus.login" id="gsign"></google-signin> -->
+<!-- Just for demonstration purposes -->
+ <!-- <google-api-loader id="plus" name="plus" version="v1"
+      on-google-api-load="{{displayProfile}}"> -->   
+
     <core-ajax method="POST" id="entryPost" handleAs="json" data url="https://quistar.firebaseio.com/{{quizId}}/leaderboard.json">
 </core-ajax>
-
-    <form>
-      <input type="text" value="jouw naam" id="naam">
-        <core-icon-button icon="arrow-forward" on-tap="{{addLeaderboard}}">Toevoegen aan leaderboard</core-icon-button>
-    </form>
+  <template id="profile" bind="{{ profile }}">
+      <h1>{{nickname}}</h1>
+      <img src="{{image.url}}" class="avatar" />
+      <core-icon-button icon="arrow-forward" on-tap="{{addLeaderboard}}">Bewaar mijn score</core-icon-button>
+    </template>
   </template>
+  <script>
+
+  </script>
   <script>
     (function () {
       'use strict';
@@ -22,22 +30,49 @@
       Polymer({
         ready: function(){
 
-          this.$.gsign.addEventListener('google-signin-success', function(e){
-            var gapi = {};
-            console.log(e);
+          this.userobject = {};
+
+          var that = this;
+
+          this.addEventListener('google-signin-success', function(e){
+            console.log('test is dit fired?');
+            gapi.client.load('plus', 'v1', function() {
+            // To retreive profile information for a user, use the
+            // people.get API method. For profile info for the currently
+            // authorized user, use the userId value of me.
+            var request = gapi.client.plus.people.get({
+                'userId': 'me'
+            });
+
+            request.execute(function(resp) {
+                // Some useful profile information is now available
+                // via the returned object (resp). For example, we
+                // can discover the displayName, skills and so on.
+                console.log(resp);
+
+                // This data can then be rendered into a template:
+                var t = that.$.profile;
+                t.model = {};
+                t.model.profile = resp;
+
+                that.userobject = resp;
+            });
+        });
           });
-          
+
         },
 
-        // define element prototype here
         addLeaderboard: function(){
-        //ajax.go();
-        this.naam = this.$.naam.value;
+
+        this.naam =this.userobject.nickname;
+
         this.data = { "naam": this.naam,
+                      "avatar": this.userobject.image.url,
                       "score": this.score
                     };
         this.data = JSON.stringify(this.data);
         this.$.entryPost.body = this.data;
+        console.log('Add high score: ', this.data);
         this.$.entryPost.go();
         this.hidden = true;
       }

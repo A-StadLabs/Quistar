@@ -13,21 +13,21 @@
 <link rel="import" href="../../elements/our-quizmaker/our-quizmaker.html">
 
 
-
-
-
 <polymer-element name="our-scenes" attributes="">
+ 
+    
+
 <template>
   <core-ajax url="https://quistar.firebaseio.com/.json" handleAs="json" id="getAjax" on-core-response="{{handleResponse}}" auto></core-ajax>
   <link rel="stylesheet" href="our-scenes.css">
   <core-animated-pages fit selected="" id="scenes" transitions="slide-from-right" vertical layout center>
-  
   <section vertical layout center>
     <!-- <div id="logo-quispel" src=""></div> -->
     <core-header-panel fit mode="waterfall">
     <div class="core-header" vertical layout center>
       <h1>QUIST<img class="ster" src="../../images/STER.svg" on-tap="{{editor}}"></img>R</h1>
       <p>KIES EEN QUIZ, WORD EEN STER</p>
+
     </div>
     <div>
     <core-selector id="quizSelector" valueattr="quizId" on-core-activate="{{selectQuiz}}" fit>
@@ -53,9 +53,13 @@
   (function () {
     'use strict';
 
+
     Polymer({
 
+      
+
         ready: function(){
+
            this.$.scenes.selected = 0;
            var that = this;
            this.$.ourquiz.addEventListener('overzicht', function(){
@@ -67,8 +71,12 @@
            this.$.quizSelector.addEventListener('startquiz', function(){
             that.selectQuiz();
            });
+
+
         },
 
+        
+      
         // define element prototype here
         handleResponse: function(e){
           this.quizzes = e.detail.response;
@@ -82,7 +90,9 @@
           this.quizSelected = this.$.quizSelector.selectedItem.quizId;
           this.quizObject = this.quizzes[this.quizSelected];
           this.$.scenes.selected = 1;
-        }
+        },
+
+
       });
 
   })();

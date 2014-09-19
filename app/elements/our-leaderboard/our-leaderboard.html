@@ -13,7 +13,7 @@
 <template repeat="{{leader in leaderboard}}">
 <div horizontal layout center class="leaderscontainer">
       <div>
-        <img class="avatar" src="../../images/users/tom.jpg">
+        <img class="avatar" src="{{leader.avatar}}">
       </div>
       <div flex>{{leader.naam}}</div>
       <div>{{leader.score}}</div>
@@ -41,7 +41,7 @@
           console.log('Leaderboard: ', JSON.stringify(this.keys));
           for (var i = this.keys.length - 1; i >= 0; i--) {
             var j = this.keys[i];
-            this.leaderboard.push({'naam': this.data[j].naam, 'score': this.data[j].score});
+            this.leaderboard.push({'naam': this.data[j].naam, 'score': this.data[j].score, 'avatar': this.data[j].avatar});
             console.log('naam: ',this.data[j].naam);
             console.log('naam: ',this.data[j].score);
           };

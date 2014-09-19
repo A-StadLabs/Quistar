@@ -83,14 +83,11 @@
     </core-toolbar>
     <div class="card2">
 
-
-
     <h2>Jouw score is </h2>
     <h1 class="scoretag">{{score}}</h1>
     
     <p>Jouw A-profiel op de wall of fame</p>
     <our-leaderentry id="leaderentry" score="{{score}}" quizobject="{{quizObject}}" quizId="{{quizId}}"></our-leaderentry>
-
 
     </div>
 
@@ -111,6 +108,7 @@
         },
         // define element prototype here
         ready: function(){
+          //this.$.quizscenes.selected = 2;
           this.score = 0;
           this.tijd = 1000;
 
