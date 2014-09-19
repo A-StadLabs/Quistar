@@ -42,20 +42,28 @@
     </core-header-panel>
     </section>
 
+    <!-- Hier start de quiz -->
+
     <section>
     <core-header-panel mode="waterfall" fit>
+
     <core-toolbar id="controls">
-    <div vertical layout>
-    <core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}">ANDERE QUIZ</core-icon-button>
-    </div>
-    <div flex horizontal layout center-justified>
-      <our-countdown timer="0" id="countdown"></our-countdown>
-      <div class="heading">{{score}} </div>
-    </div>
+
+      <div horizontal layout end-justified>
+        <div flex>
+        <core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}"></core-icon-button></div>
+        <div class="heading">{{score}}</div>
+      </div>
+
+
+<!--     <our-countdown timer="0" id="countdown" class="breed"></our-countdown>
+ -->
     </core-toolbar>
+
     <div vertical layout>
     <our-opgave vragen="{{quizObject.opgaven}}" id="ouropgave"></our-opgave>
     </div>
+
     </core-header-panel>
     </section>
 
