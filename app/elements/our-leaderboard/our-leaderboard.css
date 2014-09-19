@@ -38,3 +38,9 @@
 	text-transform: uppercase;
 	font-weight: 400;
 }
+
+.leaderscontainer :nth-child(1n) {
+  background-color: green;
+  color:yellow;
+}
+
