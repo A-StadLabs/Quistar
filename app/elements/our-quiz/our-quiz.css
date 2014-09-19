@@ -7,8 +7,6 @@
 	background-color: #333333;
 }
 
-
-
 #score-add {
 	background-color: #2E475C;
 }
@@ -23,7 +21,7 @@ core-icon-button {
 
 #controls {
 	background-color: #5CA679;
-
+	border: 1px solid white;
 }
 
 #countdown {
@@ -39,7 +37,6 @@ core-icon-button {
 .heading {
 	color: #FCC13E;
 	font-weight: 900;
-	width: 200px;
 }
 
 .card {
@@ -69,6 +66,11 @@ core-icon-button {
 
 }
 
+.breed {
+	width: 100%;
+	display: block;
+}
+
 
 p {
 	font-size: 20px;
@@ -79,7 +81,9 @@ p {
 }
 
 
-
+.red {
+	background-color: red;
+}
 
 
 .center {
