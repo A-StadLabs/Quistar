@@ -45,7 +45,7 @@
             console.log('naam: ',this.data[j].naam);
             console.log('naam: ',this.data[j].score);
           };
-
+          this.leaderboard.sort(function(a,b){ return b.score - a.score});
           console.log('array: ',JSON.stringify(this.leaderboard));
         }
       });
