@@ -69,14 +69,31 @@
     </core-header-panel>
     </section>
 
-    <section vertical layout center center-justified>
-    <h1>Einde</h1>
-    <h1>Jouw score is {{score}}</h1>
+    <section>
+
+          <core-toolbar id="backbutton">
+    <div  class="core-header" vertical layout>
+      <div><core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}">NAAR QUISTAR-MENU</core-icon-button>
+      </div>
+      <div flex class="heading">
+        
+      </div>
+    </div>
+    <div flex horizontal center-justified layout></div>
+    </core-toolbar>
+    <div class="card2">
+
+
+
+    <h2>Jouw score is </h2>
+    <h1 class="scoretag">{{score}}</h1>
     
     <p>Jouw A-profiel op de wall of fame</p>
     <our-leaderentry id="leaderentry" score="{{score}}" quizobject="{{quizObject}}" quizId="{{quizId}}"></our-leaderentry>
 
-    <core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}">Terug naar quizoverzicht</core-icon-button>
+
+    </div>
+
     <our-leaderboard quizobject="{{quizObject.leaderboard}}" quizId="{{quizId}}"></our-leaderboard>
     </section>
     </core-animated-pages>
