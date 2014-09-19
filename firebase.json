@@ -1,5 +1,5 @@
 {
-  "firebase": "kwistet",
+  "firebase": "quistar",
   "public": "app/",
   "ignore": [
     "firebase.json",
