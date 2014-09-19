@@ -45,13 +45,16 @@
     <section>
     <core-header-panel mode="waterfall" fit>
     <core-toolbar id="controls">
-    <div vertical layout>
+
+    <div>
     <core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}">ANDERE QUIZ</core-icon-button>
     </div>
+
     <div flex horizontal layout center-justified>
       <our-countdown timer="0" id="countdown"></our-countdown>
       <div class="heading">{{score}} </div>
     </div>
+    
     </core-toolbar>
     <div vertical layout>
     <our-opgave vragen="{{quizObject.opgaven}}" id="ouropgave"></our-opgave>

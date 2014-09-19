@@ -31,6 +31,11 @@ core-icon-button {
 }
 
 
+#progressContainter {
+	width: 100px;
+}
+
+
 .heading {
 	color: #FCC13E;
 	font-weight: 900;
