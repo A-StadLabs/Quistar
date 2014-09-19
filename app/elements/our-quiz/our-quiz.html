@@ -48,8 +48,10 @@
     <div vertical layout>
     <core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}">ANDERE QUIZ</core-icon-button>
     </div>
-    <div flex><our-countdown timer="0" id="countdown"></our-countdown></div>
-    <div class="heading">{{score}} </div>
+    <div flex horizontal layout>
+      <our-countdown timer="0" id="countdown"></our-countdown>
+      <div class="heading">{{score}} </div>
+    </div>
     </core-toolbar>
     <div vertical layout>
     <our-opgave vragen="{{quizObject.opgaven}}" id="ouropgave"></our-opgave>
@@ -89,6 +91,8 @@
             if(e.detail.antwoordis=='true'){
             that.score = that.score+that.$.countdown.timer;
             that.$.puntenerbij.test = true;
+                      that.$.countdown.timer = 10;
+
           } 
           that.$.countdown.timer = 10;
           });
