@@ -10,13 +10,13 @@
 
 <div class="scoreboard">
 <span class="center"><h1>Wall of fame</h1></span>
-<template repeat="{{key in keys}}">
+<template repeat="{{leader in leaderboard}}">
 <div horizontal layout center class="quizcardcontainer">
       <div>
         <img class="avatar" src="../../images/users/tom.jpg">
       </div>
-      <div flex>{{data[key].naam}}</div>
-      <div>{{data[key].score}}</div>
+      <div flex>{{leader.naam}}</div>
+      <div>{{leader.score}}</div>
     </div>
     </template>
     </div>
@@ -30,14 +30,23 @@
         // define element prototype here
         ready: function(){
           this.leaderboard = {};
-          this.leaderboard = this.quizobject;
         },
 
         quizobjectChanged: function(){
-          this.leaderboard = this.quizobject;
+
         },
 
         readData: function(){
+          this.leaderboard = [];
+          console.log('Leaderboard: ', JSON.stringify(this.keys));
+          for (var i = this.keys.length - 1; i >= 0; i--) {
+            var j = this.keys[i];
+            this.leaderboard.push({'naam': this.data[j].naam, 'score': this.data[j].score});
+            console.log('naam: ',this.data[j].naam);
+            console.log('naam: ',this.data[j].score);
+          };
+
+          console.log('array: ',JSON.stringify(this.leaderboard));
         }
       });
 
