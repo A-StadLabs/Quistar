@@ -21,11 +21,14 @@ core-icon-button {
 
 #controls {
 	background-color: #5CA679;
-	border: 1px solid white;
+}
+
+.top-controls {
+	padding-top:10px;
 }
 
 #countdown {
-	margin-right: 10px;
+	width: 100%;
 }
 
 

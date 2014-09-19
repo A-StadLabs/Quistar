@@ -5,7 +5,7 @@
 <polymer-element name="our-countdown" attributes="timer start">
   <template>
     <link rel="stylesheet" href="our-countdown.css">
-    <paper-progress value="{{timer}}" max="10"></paper-progress>
+    <paper-progress value="{{timer}}" max="1000"></paper-progress>
   </template>
   <script>
     (function () {
@@ -29,7 +29,7 @@
             // that.resttijd = this.timer;
             //console.log(that.timer+'hoeveel');
           };
-        }, 1000);
+        }, 10);
         }
       });
 
