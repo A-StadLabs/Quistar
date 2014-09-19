@@ -86,16 +86,18 @@
         ready: function(){
           this.score = 0;
           this.tijd = 10;
+
           var that = this;
+
           this.$.ouropgave.addEventListener('addscore', function(e){
             if(e.detail.antwoordis=='true'){
             that.score = that.score+that.$.countdown.timer;
-            //that.$.puntenerbij.test = true;
-            that.$.countdown.timer = 10;
+
 
           } 
           that.$.countdown.timer = 10;
           });
+
           this.$.ouropgave.addEventListener('einde', function(){
             that.$.quizscenes.selected++;
           });
