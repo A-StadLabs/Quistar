@@ -1,3 +1,30 @@
 :host {
   display: block;
 }
+
+
+paper-progress::shadow #activeProgress {
+  background-color: #FCC13E;
+}
+
+paper-progress::shadow #progressContainer {
+  background-color: rgba(0,0,0,0.05);
+}
+
+
+
+paper-progress {
+	width: 100vw;
+}
+
+
+
+@media screen and (max-width: 480px) {
+
+paper-progress {
+	min-width: 320px;
+}
+
+
+
+}
