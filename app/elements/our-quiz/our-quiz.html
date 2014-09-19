@@ -48,7 +48,7 @@
     <div vertical layout>
     <core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}">ANDERE QUIZ</core-icon-button>
     </div>
-    <div flex horizontal layout>
+    <div flex horizontal layout center-justified>
       <our-countdown timer="0" id="countdown"></our-countdown>
       <div class="heading">{{score}} </div>
     </div>
@@ -90,8 +90,8 @@
           this.$.ouropgave.addEventListener('addscore', function(e){
             if(e.detail.antwoordis=='true'){
             that.score = that.score+that.$.countdown.timer;
-            that.$.puntenerbij.test = true;
-                      that.$.countdown.timer = 10;
+            //that.$.puntenerbij.test = true;
+            that.$.countdown.timer = 10;
 
           } 
           that.$.countdown.timer = 10;
