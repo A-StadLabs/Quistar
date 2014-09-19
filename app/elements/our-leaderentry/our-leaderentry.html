@@ -1,9 +1,12 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+<link rel="import" href="../../bower_components/google-signin/google-signin.html">
 
 <polymer-element name="our-leaderentry" attributes="score quizobject quizId">
   <template>
     <link rel="stylesheet" href="our-leaderentry.css">
+
+<google-signin clientId="719285224024-hfqn4j36nerq1ai5q612qrkq4pnoi6q5.apps.googleusercontent.com" scopes="profile" id="gsign"></google-signin>
     <core-ajax method="POST" id="entryPost" handleAs="json" data url="https://quistar.firebaseio.com/{{quizId}}/leaderboard.json">
 </core-ajax>
 
@@ -18,8 +21,14 @@
 
       Polymer({
         ready: function(){
+
+          this.$.gsign.addEventListener('google-signin-success', function(e){
+            var gapi = {};
+            console.log(e);
+          });
           
         },
+
         // define element prototype here
         addLeaderboard: function(){
         //ajax.go();
