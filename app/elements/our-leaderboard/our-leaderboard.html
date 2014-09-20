@@ -10,8 +10,8 @@
 
 <div class="scoreboard">
 <span class="center"><h1>Wall of fame</h1></span>
-<template repeat="{{leader in leaderboard}}">
-<div horizontal layout center class="leaderscontainer">
+<template repeat="{{leader, i in leaderboard}}">
+<div horizontal layout center id="entry{{i}}" class="leaderscontainer {{ {active: i==0} }}">
       <div>
         <img class="avatar" src="{{leader.avatar}}">
       </div>
