@@ -11,7 +11,7 @@
 <div class="scoreboard">
 <span class="center"><h1>Wall of fame</h1></span>
 <template repeat="{{leader, i in leaderboard}}">
-<div horizontal layout center id="entry{{i}}" class="leaderscontainer {{ {active: i==0} }}">
+<div horizontal layout center id="entry{{i}}" class="leaderscontainer">
       <div>
         <img class="avatar" src="{{leader.avatar}}">
       </div>
@@ -52,18 +52,21 @@
           };
           this.leaderboard.sort(function(a,b){ return b.score - a.score});
           // console.log('array: ',JSON.stringify(this.leaderboard));
-        },
+        }
 
+        // Legendary Script by Ben A.
 
-        whosQSTAR: function(){
-            this.qstar = [];
-            for (var k = this.keys.length - 1; k >= 0; k--) {
-            var l = this.keys[k];
-            this.qstar.push(this.data[l].score);}
-            var HighScoreS = this.qstar;
-            var HighScore = Math.max.apply(Math, this.qstar);
-            console.log(HighScore);        
-          }
+        // whosQSTAR: function(){
+        //     this.qstar = [];
+        //     for (var k = this.keys.length - 1; k >= 0; k--) {
+        //     var l = this.keys[k];
+        //     this.qstar.push(this.data[l].score);}
+        //     var HighScoreS = this.qstar;
+        //     var HighScore = Math.max.apply(Math, this.qstar);
+        //     console.log(HighScore);        
+        //   }
+
+        // 2014
 
 
 
