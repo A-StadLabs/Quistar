@@ -27,10 +27,10 @@
   <link rel="stylesheet" href="our-scenes.css">
   <core-animated-pages fit selected="" id="scenes" transitions="slide-from-right" vertical layout center>
   <section vertical layout center>
-    <!-- <div id="logo-quispel" src=""></div> -->
     <core-header-panel fit mode="waterfall">
     <div class="core-header" vertical layout center>
     <core-icon-button icon="add" class="DIY" left-justified on-tap="{{editor}}"></core-icon-button>
+    <a href="https://github.com/A-StadLabs/quistar" target="blank"><core-icon-button src="../../images/GitHub-Mark-Light-32px.png" class="GIT" left-justified></core-icon-button></a>
       <h1>QUIST<img class="ster" src="../../images/STER.svg"></img>R</h1>
       <p>EEN A-STADLABS EXPERIMENT</p>
 
@@ -75,6 +75,8 @@
            this.$.ourquiz.addEventListener('overzicht', function(){
               that.$.scenes.selected = 0;
            });
+
+           
            this.$.quizmaker.addEventListener('exit', function(){
               that.$.scenes.selected = 0;
            });

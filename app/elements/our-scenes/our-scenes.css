@@ -19,7 +19,11 @@ p {
 	top:0;
 	left:0;
 }
-
+.GIT {
+	position: absolute;
+	top:0;
+	left:40px;
+}
 #quizSelector {
 	max-width: 640px;
 	margin: 0px auto;
