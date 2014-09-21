@@ -19,14 +19,14 @@
     <section id="{{i}}">
     <div class="opgave">
       <div class="quizcardcontainer" horizontal layout center center-justified flex>
-      <h2 >{{vraag.vraag}}</h2>
+      <h2>{{vraag.vraag}}</h2>
       </div>
     </div>
     <div>
-      <core-selector id="antwoordSelector" selected="{{selectedAntwoord}}" valueattr="juiste" on-core-activate="{{geefAntwoord}}" vertical layout center>
-      <core-icon-button id="0" juiste="{{vraag.antwoorden.antwoord1}}" antwoord="{{antwoord.antwoord}}">{{ vraag.antwoorden.antwoord1 }}</core-icon-button>
-      <core-icon-button id="1" juiste="{{vraag.antwoord1}}" antwoord="{{antwoord.antwoord}}">{{ vraag.antwoorden.antwoord2 }}</core-icon-button>
-      <core-icon-button id="2" juiste="{{vraag.antwoord1}}" antwoord="{{antwoord.antwoord}}">{{ vraag.antwoorden.antwoord3 }}</core-icon-button>
+      <core-selector id="antwoordSelector" selected="{{selectedAntwoord}}" valueattr="id" on-core-activate="{{geefAntwoord}}" vertical layout center>
+      <core-icon-button id="1" juist="{{vraag.juiste}}" antwoord="{{antwoord.antwoord}}">{{ vraag.antwoorden.antwoord1 }}</core-icon-button>
+      <core-icon-button id="2" juist="{{vraag.juiste}}" antwoord="{{antwoord.antwoord}}">{{ vraag.antwoorden.antwoord2 }}</core-icon-button>
+      <core-icon-button id="3" juist="{{vraag.juiste}}" antwoord="{{antwoord.antwoord}}">{{ vraag.antwoorden.antwoord3 }}</core-icon-button>
       </template>
       </core-selector>
     </div>
@@ -49,16 +49,18 @@
       vragenChanged: function(){
         console.log(this.vragen);
       },
-      geefAntwoord: function(){
-        console.log('Gegeven antwoord is: ', this.selectedAntwoord);
+      geefAntwoord: function(e){
+        //console.log('Gegeven antwoord is: ', e.detail.item.attributes[1].value);
+        
         // hier komt de logica om te zien of het antwoord goed of fout is
         // tot hier dan de logica.
         var that = this;
         setTimeout(function(){
           
-        if(that.$.opgaveScenes.selected<7){
+        if(that.$.opgaveScenes.selected<6){
         that.$.opgaveScenes.selected++;
-        that.fire('addscore', {antwoordis: that.selectedAntwoord});
+        
+        that.fire('addscore', {antwoordis: that.selectedAntwoord, juisteis: e.detail.item.attributes[1].value});
       } else {
         that.fire('einde');
         that.$.opgaveScenes.selected = 0;

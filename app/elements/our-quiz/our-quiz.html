@@ -118,7 +118,8 @@
           var that = this;
 
           this.$.ouropgave.addEventListener('addscore', function(e){
-            if(e.detail.antwoordis=='true'){
+            console.log('ANtwoord is: ',e.detail.antwoordis,' Juiste is: ', e.detail.juisteis);
+            if(e.detail.antwoordis==e.detail.juisteis){
             that.score = that.score+that.$.countdown.timer/10;
             that.score = Math.round(that.score);
 
@@ -129,6 +130,8 @@
 
           this.$.ouropgave.addEventListener('einde', function(){
             that.$.quizscenes.selected++;
+            that.quizObject.plays++;
+
           });
 
         },
