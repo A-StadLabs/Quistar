@@ -130,7 +130,9 @@
           this.$.ouropgave.addEventListener('einde', function(){
             that.$.quizscenes.selected++;
           });
+
         },
+
         startQuiz: function(){
           this.score = 0;
           this.$.leaderentry.hidden = false;
@@ -145,6 +147,7 @@
         },
 
         quizObjectChanged: function(){
+          console.log('---quizobject: ', this.quizObject[0].quiztitel);
         }
       });
 

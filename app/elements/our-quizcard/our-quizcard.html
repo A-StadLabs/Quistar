@@ -2,13 +2,14 @@
 <link rel="import" href="../../bower_components/core-collapse/core-collapse.html">
 
 
-<polymer-element name="our-quizcard" attributes="quizTitel quizDescr quizId qcOpen">
+<polymer-element name="our-quizcard" attributes="quizTitel quizDescr quizId qcOpen quizPlays">
   <template>
     <link rel="stylesheet" href="our-quizcard.css">
     <div horizontal layout center class="quizcardcontainer">
       <div flex>
           {{quizTitel}}
       </div>
+      <div class="plays">{{quizPlays}}</div>
       <img class="gray" src="../../images/STER-yellow.svg">
       <div>
         <img class="avatar" src="../../images/users/tom.jpg">

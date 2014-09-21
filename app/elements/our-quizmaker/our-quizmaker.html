@@ -6,16 +6,16 @@
 <link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="../../bower_components/paper-radio-button/paper-radio-button.html">
 <link rel="import" href="../../bower_components/paper-radio-group/paper-radio-group.html">
-
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
 <link rel="import" href="../../bower_components/core-selector/core-selector.html">
 <link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
 <link rel="import" href="../../bower_components/core-animated-pages/transitions/slide-from-right.html">
 
 
-
-<polymer-element name="our-quizmaker" attributes="">
+<polymer-element name="our-quizmaker" attributes="username">
   <template>
     <link rel="stylesheet" href="our-quizmaker.css">
+    
     <core-header-panel fit>
       <core-toolbar>
         <core-icon-button icon="close" on-tap="{{exit}}"></core-icon-button>
@@ -26,52 +26,253 @@
           <div class="container">
             <h1>Maak zelf een Quistar</h1>
             <p>Een Quistar quiz heeft altijd 7 vragen met 3 antwoorden per vraag.</p>
-            <p>Om te beginnen, geef jouw quiz een naam:</p>
-            <paper-input label="Naam van Quiz"></paper-input>
-              <br />
-            <paper-icon-button on-tap="{{next}}" icon="arrow-forward" raisedButton label="Ga verder"></paper-icon-button>
+            <paper-input label="Naam van Quiz" id="quizNaam"></paper-input>
+            <paper-input label="Korte beschrijving" id="quizDescr" multiline></paper-input>
           </div>
         </div>
-        </section>
 
-        <section>
         <div class="card">
           <div class="container">
             <h1>Opdracht 1</h1>
-            <paper-input label="Wat is de vraag?"></paper-input>
-            <paper-input label="Antwoord 1"></paper-input>
-            <paper-input label="Antwoord 2"></paper-input>
-            <paper-input label="Antwoord 3"></paper-input>
-              <br />
-            <paper-icon-button on-tap="{{next}}" icon="arrow-forward" raisedButton label="Ga verder"></paper-icon-button>
-          </div>
-        </div>
-        </section>
-
-
-        <section>
-          <div class="card">
-          <div class="container">
-            <h1>Kies het juiste antwoord</h1>
-            <paper-radio-group vertical layout>
-              <paper-radio-button label="jaja"></paper-radio-button>
-              <paper-radio-button label="Antoowrd 1"></paper-radio-button>
-              <paper-radio-button label="Antoowrd 1"></paper-radio-button>
+            <paper-input label="Wat is de vraag?" id="quizVraag1"></paper-input>
+            <paper-input label="Antwoord 1" id="opdracht1antwoord1"></paper-input>
+            <paper-input label="Antwoord 2" id="opdracht1antwoord2"></paper-input>
+            <paper-input label="Antwoord 3" id="opdracht1antwoord3"></paper-input>
+            <p>Het juiste antwoord is:</p>
+            <paper-radio-group id="juiste1">
+              <paper-radio-button value="" label="Antwoord 1" id="opdracht1juiste1"></paper-radio-button>
+              <paper-radio-button value="" label="Antwoord 2" id="opdracht1juiste2"></paper-radio-button>
+              <paper-radio-button value="" label="Antwoord 3" id="opdracht1juiste3"></paper-radio-button>
             </paper-radio-group>
-              <br />
-            <paper-icon-button on-tap="{{next}}" icon="arrow-forward" raisedButton label="Ga verder"></paper-icon-button>
           </div>
         </div>
+
+        <div class="card">
+          <div class="container">
+            <h1>Opdracht 2</h1>
+            <paper-input label="Wat is de vraag?" id="quizVraag2" value="vraag"></paper-input>
+            <paper-input label="Antwoord 1" id="opdracht2antwoord1"></paper-input>
+            <paper-input label="Antwoord 2" id="opdracht2antwoord2"></paper-input>
+            <paper-input label="Antwoord 3" id="opdracht2antwoord3"></paper-input>
+            <p>Het juiste antwoord is:</p>
+            <paper-radio-group id="juiste2">
+              <paper-radio-button value="" label="Antwoord 1" id="opdracht2juiste1"></paper-radio-button>
+              <paper-radio-button value="" label="Antwoord 2" id="opdracht2juiste2"></paper-radio-button>
+              <paper-radio-button value="" label="Antwoord 3" id="opdracht2juiste3"></paper-radio-button>
+            </paper-radio-group>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="container">
+            <h1>Opdracht 3</h1>
+            <paper-input label="Wat is de vraag?" id="quizVraag3" value="vraag"></paper-input>
+            <paper-input label="Antwoord 1" id="opdracht3antwoord1"></paper-input>
+            <paper-input label="Antwoord 2" id="opdracht3antwoord2"></paper-input>
+            <paper-input label="Antwoord 3" id="opdracht3antwoord3"></paper-input>
+            <p>Het juiste antwoord is:</p>
+            <paper-radio-group id="juiste3">
+              <paper-radio-button value="" label="Antwoord 1" id="opdracht3juiste1"></paper-radio-button>
+              <paper-radio-button value="" label="Antwoord 2" id="opdracht3juiste2"></paper-radio-button>
+              <paper-radio-button value="" label="Antwoord 3" id="opdracht3juiste3"></paper-radio-button>
+            </paper-radio-group>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="container">
+            <h1>Opdracht 4</h1>
+            <paper-input label="Wat is de vraag?" id="quizVraag4" value="vraag"></paper-input>
+            <paper-input label="Antwoord 1" id="opdracht4antwoord1"></paper-input>
+            <paper-input label="Antwoord 2" id="opdracht4antwoord2"></paper-input>
+            <paper-input label="Antwoord 3" id="opdracht4antwoord3"></paper-input>
+            <p>Het juiste antwoord is:</p>
+            <paper-radio-group id="juiste4">
+              <paper-radio-button value="" label="Antwoord 1" id="opdracht4juiste1"></paper-radio-button>
+              <paper-radio-button value="" label="Antwoord 2" id="opdracht4juiste2"></paper-radio-button>
+              <paper-radio-button value="" label="Antwoord 3" id="opdracht4juiste3"></paper-radio-button>
+            </paper-radio-group>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="container">
+            <h1>Opdracht 5</h1>
+            <paper-input label="Wat is de vraag?" id="quizVraag5" value="vraag"></paper-input>
+            <paper-input label="Antwoord 1" id="opdracht5antwoord1"></paper-input>
+            <paper-input label="Antwoord 2" id="opdracht5antwoord2"></paper-input>
+            <paper-input label="Antwoord 3" id="opdracht5antwoord3"></paper-input>
+            <p>Het juiste antwoord is:</p>
+            <paper-radio-group id="juiste5">
+              <paper-radio-button value="" label="Antwoord 1" id="opdracht5juiste1"></paper-radio-button>
+              <paper-radio-button value="" label="Antwoord 2" id="opdracht5juiste2"></paper-radio-button>
+              <paper-radio-button value="" label="Antwoord 3" id="opdracht5juiste3"></paper-radio-button>
+            </paper-radio-group>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="container">
+            <h1>Opdracht 6</h1>
+            <paper-input label="Wat is de vraag?" id="quizVraag6" value="vraag"></paper-input>
+            <paper-input label="Antwoord 1" id="opdracht6antwoord1"></paper-input>
+            <paper-input label="Antwoord 2" id="opdracht6antwoord2"></paper-input>
+            <paper-input label="Antwoord 3" id="opdracht6antwoord3"></paper-input>
+            <p>Het juiste antwoord is:</p>
+            <paper-radio-group id="juiste6">
+              <paper-radio-button value="" label="Antwoord 1" id="opdracht6juiste1"></paper-radio-button>
+              <paper-radio-button value="" label="Antwoord 2" id="opdracht6juiste2"></paper-radio-button>
+              <paper-radio-button value="" label="Antwoord 3" id="opdracht6juiste3"></paper-radio-button>
+            </paper-radio-group>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="container">
+            <h1>Opdracht 7</h1>
+            <paper-input label="Wat is de vraag?" id="quizVraag7" value="vraag"></paper-input>
+            <paper-input label="Antwoord 1" id="opdracht7antwoord1"></paper-input>
+            <paper-input label="Antwoord 2" id="opdracht7antwoord2"></paper-input>
+            <paper-input label="Antwoord 3" id="opdracht7antwoord3"></paper-input>
+            <p>Het juiste antwoord is:</p>
+            <paper-radio-group id="juiste7">
+              <paper-radio-button value="" label="Antwoord 1" id="opdracht7juiste1"></paper-radio-button>
+              <paper-radio-button value="" label="Antwoord 2" id="opdracht7juiste2"></paper-radio-button>
+              <paper-radio-button value="" label="Antwoord 3" id="opdracht7juiste3"></paper-radio-button>
+            </paper-radio-group>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="container">
+            <h1>Publiceer deze Quistar</h1>
+            <p>Kijk alles nog eens goed na en druk op <i>publiceren</i></p>
+            <core-icon-button on-tap="{{saveQuiz}}" icon="arrow-forward">Publiceren</core-icon-button>
+          </div>
+        </div>
+
         </section>
+
       </core-animated-pages>
 
     </core-header-panel>
+    <core-ajax method="POST" id="quizPost" handleAs="json" data url="https://quistar.firebaseio.com/.json">
   </template>
   <script>
     (function () {
       'use strict';
 
       Polymer({
+        ready: function(){
+          this.nieuwequiz = [];
+          this.username = 'king flurkel';
+          console.log('----- quizobject: ', JSON.stringify(this.nieuwequiz));
+        },
+
+        saveQuiz: function(){
+          var that = this;
+          console.log('juist1: ',that.$.juiste1.selected);
+         
+          console.log('check answers: ',that.$.quizNaam.value);
+
+          
+
+          this.opgaven = [];
+
+          this.opgaven.push({
+            'vraag': that.$.quizVraag1.value, 
+            'juiste': that.$.juiste1.selected+1,
+            'antwoorden': {
+              'antwoord1': that.$.opdracht1antwoord1.value,
+              'antwoord2': that.$.opdracht1antwoord2.value,
+              'antwoord3': that.$.opdracht1antwoord3.value
+            }
+          });
+          
+          this.opgaven.push({  
+            'vraag': that.$.quizVraag2.value, 
+            'juiste': that.$.juiste2.selected+1,
+            'antwoorden': {
+              'antwoord1': that.$.opdracht2antwoord1.value,
+              'antwoord2': that.$.opdracht2antwoord2.value,
+              'antwoord3': that.$.opdracht2antwoord3.value
+            }
+          });
+          
+          this.opgaven.push({  
+            'vraag': that.$.quizVraag3.value, 
+            'juiste': that.$.juiste3.selected+1,
+            'antwoorden': {
+              'antwoord1': that.$.opdracht3antwoord1.value,
+              'antwoord2': that.$.opdracht3antwoord2.value,
+              'antwoord3': that.$.opdracht3antwoord3.value
+            }
+          });
+          
+          this.opgaven.push({  
+            'vraag': that.$.quizVraag4.value, 
+            'juiste': that.$.juiste4.selected+1,
+            'antwoorden': {
+              'antwoord1': that.$.opdracht4antwoord1.value,
+              'antwoord2': that.$.opdracht4antwoord2.value,
+              'antwoord3': that.$.opdracht4antwoord3.value
+            }
+          });
+          
+          this.opgaven.push({  
+            'vraag': that.$.quizVraag5.value, 
+            'juiste': that.$.juiste5.selected+1,
+            'antwoorden': {
+              'antwoord1': that.$.opdracht5antwoord1.value,
+              'antwoord2': that.$.opdracht5antwoord2.value,
+              'antwoord3': that.$.opdracht5antwoord3.value
+            }
+          });
+          
+          this.opgaven.push({  
+            'vraag': that.$.quizVraag6.value, 
+            'juiste': that.$.juiste6.selected+1,
+            'antwoorden': {
+              'antwoord1': that.$.opdracht6antwoord1.value,
+              'antwoord2': that.$.opdracht6antwoord2.value,
+              'antwoord3': that.$.opdracht6antwoord3.value
+            }
+          });
+          
+          this.opgaven.push({  
+            'vraag': that.$.quizVraag7.value, 
+            'juiste': that.$.juiste7.selected+1,
+            'antwoorden': {
+              'antwoord1': that.$.opdracht7antwoord1.value,
+              'antwoord2': that.$.opdracht7antwoord2.value,
+              'antwoord3': that.$.opdracht7antwoord3.value
+            }
+          });
+
+          this.nieuwequiz.push({ 
+            'quiztitel': that.$.quizNaam.value,
+            'quizdescr': that.$.quizDescr.value,
+            'published': 'nope',
+            'plays': 0,
+            'opgaven': this.opgaven            
+          });
+
+          console.log('quizobject: ', JSON.stringify(this.nieuwequiz));
+          //console.log('opgaven: ', JSON.stringify(this.opgaven));
+
+          this.data = JSON.stringify(this.nieuwequiz);
+          that.$.quizPost.body = this.data;
+
+          console.log('Ik ga versturen: ',that.$.quizPost.body);
+
+          that.$.quizPost.go();
+          // this.opdrachten = [];
+          // this.opdrachten[0].opdracht = that.$.quizVraag1.value;
+          // this.opdrachten[0].antwoorden[0] = this.$.opdracht1antwoord1.value;
+          // this.opdrachten[0].antwoorden[0].juist = 'false';
+          // console.log('quizVraag1: ', JSON.stringify(this.opdrachten));
+
+        },
         // define element prototype here
         next: function(){
           this.$.animated.selected++;
@@ -80,7 +281,6 @@
         exit: function(){
           this.$.animated.selected=0;
           this.fire('exit');
-          
         }
       });
 

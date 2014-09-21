@@ -14,10 +14,12 @@
   margin-right: auto;
   margin-left: auto;
   min-height: 45px;
-  
-
 }
 
+:host core-icon-button[juiste] {
+  display: block;
+  background-color: black;
+}
 
 :host h1{
 	display: block;
@@ -56,7 +58,7 @@
 }
 
 
-
+/*
 @media screen and (min-width: 800px) {
 #antwoordSelector {
   width: 80%;
@@ -87,3 +89,4 @@
 
 
 
+*/
