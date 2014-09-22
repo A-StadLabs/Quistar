@@ -42,6 +42,11 @@
 
 .ster {
   margin-right: 10px;
+  width: 18px;
+  height: 18px;
+  margin-left: 10px;
+    color:yellow;
+  text-transform: uppercase;
 }
 
 
