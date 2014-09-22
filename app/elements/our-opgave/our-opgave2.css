@@ -9,7 +9,7 @@
   margin: 0px auto;
 }
 
-core-icon-button {
+.antwoord {
   display: block;
   background-color: rgba(255,255,255,0.15);
   /*border: 4px solid rgba(255,255,255,0.25);*/
@@ -19,6 +19,11 @@ core-icon-button {
   padding: 20px;
   width: 100%;
   /*border-radius: 15px;*/
+}
+
+.antwoord(:active) {
+  display: block;
+  background-color: green;
 }
 
 
@@ -77,9 +82,9 @@ core-icon-button {
 
 
 
-.juisteAntwoord {
-  color: red;
-  background-color: blue;
+.juisteAntwoord.core-selected {
+  background-color: #FCC13E;
+  color:black;
 }
 
 
