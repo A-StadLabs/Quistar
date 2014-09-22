@@ -19,6 +19,8 @@
     <section id="{{i}}">
     <div class="opgave">
       <div class="quizcardcontainer" horizontal layout center center-justified flex>
+      <div class="opgaveimgcont" vertical center-justified><img src="{{vraag.img}}" hidden?="{{!vraag.img}}" class="opgaveimage"></div>
+      <br />
       <h2>{{vraag.vraag}}</h2>
       </div>
     </div>
@@ -47,7 +49,7 @@
 
       },
       vragenChanged: function(){
-        //console.log(this.vragen);
+        console.log('-------VRAGEN---- ',JSON.stringify(this.vragen));
       },
       geefAntwoord: function(e){
         //console.log('Gegeven antwoord is: ', e.detail.item.attributes[1].value);
