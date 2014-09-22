@@ -65,7 +65,10 @@ core-icon-button {
 
 
 
-
+.juisteAntwoord {
+  color: red;
+  background-color: blue;
+}
 
 
 

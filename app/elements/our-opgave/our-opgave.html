@@ -24,9 +24,9 @@
     </div>
     <div>
       <core-selector id="antwoordSelector" selected="{{selectedAntwoord}}" valueattr="id" on-core-activate="{{geefAntwoord}}" vertical layout center>
-      <core-icon-button id="1" juist="{{vraag.juiste}}" antwoord="{{antwoord.antwoord}}">{{ vraag.antwoorden.antwoord1 }}</core-icon-button>
-      <core-icon-button id="2" juist="{{vraag.juiste}}" antwoord="{{antwoord.antwoord}}">{{ vraag.antwoorden.antwoord2 }}</core-icon-button>
-      <core-icon-button id="3" juist="{{vraag.juiste}}" antwoord="{{antwoord.antwoord}}">{{ vraag.antwoorden.antwoord3 }}</core-icon-button>
+      <core-icon-button id="1" juist="{{vraag.juiste}}" antwoord="{{antwoord.antwoord}}" class="{{ {juisteAntwoord: selectedAntwoord == vraag.juiste} | tokenList}}">{{ vraag.antwoorden.antwoord1 }}</core-icon-button>
+      <core-icon-button id="2" juist="{{vraag.juiste}}" antwoord="{{antwoord.antwoord}}" class="{{ {juisteAntwoord: selectedAntwoord == vraag.juiste} | tokenList}}">{{ vraag.antwoorden.antwoord2 }}</core-icon-button>
+      <core-icon-button id="3" juist="{{vraag.juiste}}" antwoord="{{antwoord.antwoord}}" class="{{ {juisteAntwoord: selectedAntwoord == vraag.juiste} | tokenList}}">{{ vraag.antwoorden.antwoord3 }}</core-icon-button>
       </template>
       </core-selector>
     </div>
