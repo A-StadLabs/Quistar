@@ -21,9 +21,11 @@
   /*border-radius: 15px;*/
 }
 
-.antwoord(:active) {
+.antwoord.core-selected {
   display: block;
-  background-color: green;
+  background-color: rgba(0,0,0,0.05);
+    color: black;
+
 }
 
 
