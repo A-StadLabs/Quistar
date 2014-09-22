@@ -1,9 +1,15 @@
 body {
-  background: #333333;
+  background: white;
   font-family: 'Montserrat', sans-serif;
   color: white;
+  background-position: 50% 50%;
+  background-image: url('../images/ster.svg');
+  background-repeat: no-repeat;
+  background-size: 200px;
 }
 
 body[unresolved] {
   background: #333333 !important;
+  background-image: url('../images/ster.svg');
+  background-size: 200px;
 } 

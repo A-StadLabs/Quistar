@@ -2,17 +2,13 @@
 <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
 <link rel="import" href="../../bower_components/google-signin/google-signin.html">
 
-<polymer-element name="our-leaderentry" attributes="score quizobject quizId">
+<polymer-element name="our-leaderentry" attributes="score quizobject quizId quizFBId">
   <template>
     <link rel="stylesheet" href="our-leaderentry.css">
 
 <google-signin width="iconOnly" clientId="719285224024-av2evld3lehrtsh3ef0eki055paumcpr.apps.googleusercontent.com" scopes="profile" id="gsign"></google-signin>
-<!-- <google-signin theme="dark" width="iconOnly" clientId="719285224024-av2evld3lehrtsh3ef0eki055paumcpr.apps.googleusercontent.com" scopes="https://www.googleapis.com/auth/plus.login" id="gsign"></google-signin> -->
-<!-- Just for demonstration purposes -->
- <!-- <google-api-loader id="plus" name="plus" version="v1"
-      on-google-api-load="{{displayProfile}}"> -->   
 
-    <core-ajax method="POST" id="entryPost" handleAs="json" data url="https://quistar.firebaseio.com/{{quizId}}/leaderboard.json">
+   <core-ajax method="POST" id="entryPost" handleAs="json" data url="https://quistar.firebaseio.com/{{quizFBId}}/0/leaderboard.json">
 </core-ajax>
   <template id="profile" bind="{{ profile }}">
       <h1>{{nickname}}</h1>
@@ -54,7 +50,6 @@
                 var t = that.$.profile;
                 t.model = {};
                 t.model.profile = resp;
-
                 that.userobject = resp;
             });
         });
@@ -64,6 +59,8 @@
 
         addLeaderboard: function(){
 
+        //this.leaderboard = this.quizobject.leaderboard;
+
         this.naam =this.userobject.displayName;
 
         this.data = { "naam": this.naam,
@@ -71,8 +68,9 @@
                       "score": this.score
                     };
         this.data = JSON.stringify(this.data);
+        
         this.$.entryPost.body = this.data;
-        console.log('Add high score: ', this.data);
+        
         this.$.entryPost.go();
         this.hidden = true;
       }

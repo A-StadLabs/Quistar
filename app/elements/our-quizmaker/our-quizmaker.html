@@ -50,7 +50,7 @@
         <div class="card">
           <div class="container">
             <h1>Opdracht 2</h1>
-            <paper-input label="Wat is de vraag?" id="quizVraag2" value="vraag"></paper-input>
+            <paper-input label="Wat is de vraag?" id="quizVraag2"></paper-input>
             <paper-input label="Antwoord 1" id="opdracht2antwoord1"></paper-input>
             <paper-input label="Antwoord 2" id="opdracht2antwoord2"></paper-input>
             <paper-input label="Antwoord 3" id="opdracht2antwoord3"></paper-input>
@@ -66,7 +66,7 @@
         <div class="card">
           <div class="container">
             <h1>Opdracht 3</h1>
-            <paper-input label="Wat is de vraag?" id="quizVraag3" value="vraag"></paper-input>
+            <paper-input label="Wat is de vraag?" id="quizVraag3"></paper-input>
             <paper-input label="Antwoord 1" id="opdracht3antwoord1"></paper-input>
             <paper-input label="Antwoord 2" id="opdracht3antwoord2"></paper-input>
             <paper-input label="Antwoord 3" id="opdracht3antwoord3"></paper-input>
@@ -82,7 +82,7 @@
         <div class="card">
           <div class="container">
             <h1>Opdracht 4</h1>
-            <paper-input label="Wat is de vraag?" id="quizVraag4" value="vraag"></paper-input>
+            <paper-input label="Wat is de vraag?" id="quizVraag4"></paper-input>
             <paper-input label="Antwoord 1" id="opdracht4antwoord1"></paper-input>
             <paper-input label="Antwoord 2" id="opdracht4antwoord2"></paper-input>
             <paper-input label="Antwoord 3" id="opdracht4antwoord3"></paper-input>
@@ -98,7 +98,7 @@
         <div class="card">
           <div class="container">
             <h1>Opdracht 5</h1>
-            <paper-input label="Wat is de vraag?" id="quizVraag5" value="vraag"></paper-input>
+            <paper-input label="Wat is de vraag?" id="quizVraag5"></paper-input>
             <paper-input label="Antwoord 1" id="opdracht5antwoord1"></paper-input>
             <paper-input label="Antwoord 2" id="opdracht5antwoord2"></paper-input>
             <paper-input label="Antwoord 3" id="opdracht5antwoord3"></paper-input>
@@ -114,7 +114,7 @@
         <div class="card">
           <div class="container">
             <h1>Opdracht 6</h1>
-            <paper-input label="Wat is de vraag?" id="quizVraag6" value="vraag"></paper-input>
+            <paper-input label="Wat is de vraag?" id="quizVraag6"></paper-input>
             <paper-input label="Antwoord 1" id="opdracht6antwoord1"></paper-input>
             <paper-input label="Antwoord 2" id="opdracht6antwoord2"></paper-input>
             <paper-input label="Antwoord 3" id="opdracht6antwoord3"></paper-input>
@@ -130,7 +130,7 @@
         <div class="card">
           <div class="container">
             <h1>Opdracht 7</h1>
-            <paper-input label="Wat is de vraag?" id="quizVraag7" value="vraag"></paper-input>
+            <paper-input label="Wat is de vraag?" id="quizVraag7"></paper-input>
             <paper-input label="Antwoord 1" id="opdracht7antwoord1"></paper-input>
             <paper-input label="Antwoord 2" id="opdracht7antwoord2"></paper-input>
             <paper-input label="Antwoord 3" id="opdracht7antwoord3"></paper-input>
@@ -259,12 +259,14 @@
             }
           });
 
+          
+
           this.nieuwequiz.push({ 
             'quiztitel': that.$.quizNaam.value,
             'quizdescr': that.$.quizDescr.value,
             'published': 'nope',
             'plays': 0,
-            'opgaven': this.opgaven            
+            'opgaven': this.opgaven
           });
 
           console.log('quizobject: ', JSON.stringify(this.nieuwequiz));

@@ -47,7 +47,7 @@
 
       },
       vragenChanged: function(){
-        console.log(this.vragen);
+        //console.log(this.vragen);
       },
       geefAntwoord: function(e){
         //console.log('Gegeven antwoord is: ', e.detail.item.attributes[1].value);
@@ -55,19 +55,23 @@
         // hier komt de logica om te zien of het antwoord goed of fout is
         // tot hier dan de logica.
         var that = this;
-        setTimeout(function(){
+
+        that.fire('addscore', {antwoordis: that.selectedAntwoord, juisteis: e.detail.item.attributes[1].value});
+
+ 
           
         if(that.$.opgaveScenes.selected<6){
         that.$.opgaveScenes.selected++;
         
-        that.fire('addscore', {antwoordis: that.selectedAntwoord, juisteis: e.detail.item.attributes[1].value});
       } else {
         that.fire('einde');
         that.$.opgaveScenes.selected = 0;
       }
         that.selectedAntwoord = -1;
-      console.log("hi")}, 500);
+
       }
+
+      
       
 
     });

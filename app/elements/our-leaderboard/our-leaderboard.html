@@ -2,16 +2,16 @@
 <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
 <link rel="import" href="../../bower_components/firebase-element/firebase-element.html">
 
-<polymer-element name="our-leaderboard" attributes="quizobject quizId">
+<polymer-element name="our-leaderboard" attributes="quizobject quizId quizFBId">
   <template>
       <link rel="stylesheet" href="our-leaderboard.css">
 
-  <firebase-element id="base" location="https://quistar.firebaseio.com/{{quizId}}/leaderboard/" data="{{data}}" keys="{{keys}}" on-data-change="{{readData}}"></firebase-element>
+  <firebase-element id="base" location="https://quistar.firebaseio.com/{{quizFBId}}/0/leaderboard/" data="{{data}}" keys="{{keys}}" on-data-change="{{readData}}"></firebase-element>
 
 <div class="scoreboard">
 <span class="center"><h1>Wall of fame</h1></span>
 <template repeat="{{leader, i in leaderboard}}">
-<div horizontal layout center id="entry{{i}}" class="leaderscontainer">
+<div horizontal layout center class="leaderscontainer">
       <div>
         <img class="avatar" src="{{leader.avatar}}">
       </div>
@@ -31,9 +31,6 @@
         // define element prototype here
         ready: function(){
           this.leaderboard = {};
-          this.qstar = {};
-
-
         },
 
         quizobjectChanged: function(){
@@ -42,14 +39,14 @@
 
 
         readData: function(){
-
+          console.log('leaderboard: ',JSON.stringify(this.data));
           this.leaderboard = [];
-          // console.log('Leaderboard: ', JSON.stringify(this.keys));
+          console.log('Leaderboard keys: ', JSON.stringify(this.keys));
           for (var i = this.keys.length - 1; i >= 0; i--) {
             var j = this.keys[i];
             this.leaderboard.push({'naam': this.data[j].naam, 'score': this.data[j].score, 'avatar': this.data[j].avatar});
-            // console.log('naam: ',this.data[j].naam);
-            // console.log('naam: ',this.data[j].score);
+               console.log('naam: ',this.data[j].naam);
+               console.log('naam: ',this.data[j].score);
           };
           this.leaderboard.sort(function(a,b){ return b.score - a.score});
           // console.log('array: ',JSON.stringify(this.leaderboard));
