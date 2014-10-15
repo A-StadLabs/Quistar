@@ -9,6 +9,8 @@
 <link rel="import" href="../../bower_components/core-header-panel/core-header-panel.html">
 <link rel="import" href="../../bower_components/core-animated-pages/transitions/slide-from-right.html">
 <link rel="import" href="../../bower_components/core-animated-pages/transitions/cross-fade.html">
+<link rel="import" href="../../bower_components/core-transition/core-transition-css.html">
+<link rel="import" href="../../bower_components/core-overlay/core-overlay.html">
 
 <polymer-element name="our-quiz" attributes="quizObject quizId quizFBId">
   <template>
@@ -22,7 +24,7 @@
     <section>
     <core-header-panel mode="waterfall" fit>
     <core-toolbar id="backbutton">
-    <div  class="core-header" vertical layout>
+    <div class="core-header" vertical layout>
       <div><core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}"></core-icon-button>
       </div>
       <div flex class="heading">
@@ -63,21 +65,26 @@
     <div self-center stretch>
     <our-countdown timer="100" id="countdown"></our-countdown>
     </div>
-
 </div>
     </core-toolbar>
 
     <div vertical layout>
+
+    <core-overlay id="overlay" backdrop transition="core-transition-center">
+      <div vertical layout center center-justified>
+      +{{punten}}
+      </div>
+    </core-overlay>
+
     <our-opgave vragen="{{quizObject.opgaven}}" id="ouropgave"></our-opgave>
     </div>
-
     </core-header-panel>
     </section>
 
     <section>
 
-          <core-toolbar id="backbutton">
-    <div  class="core-header" vertical layout>
+    <core-toolbar id="backbutton">
+    <div class="core-header" vertical layout>
       <div><core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}"></core-icon-button>
       </div>
       <div flex class="heading">
@@ -118,14 +125,31 @@
           this.$.ouropgave.addEventListener('addscore', function(e){
             // console.log('ANtwoord is: ',e.detail.antwoordis,' Juiste is: ', e.detail.juisteis);
             if(e.detail.antwoordis==e.detail.juisteis){
-            that.score = that.score+that.$.countdown.timer/10;
+             that.punten = Math.round(that.$.countdown.timer/10);
+            that.score = that.score+that.punten;
             that.score = Math.round(that.score);
-          } 
-          that.$.countdown.timer = 1000;
+            that.$.overlay.open();
+          } else {
+            that.punten = 0;
+            that.$.overlay.open();
+          }
+          
+          });
+
+          this.$.ouropgave.addEventListener('pausetimer', function(e){
+            console.log('pauze timer');
+            that.$.countdown.pauze = true;
+          });
+
+          this.$.ouropgave.addEventListener('starttimer', function(e){
+            console.log('start timer');
+            that.$.countdown.timer = 1000;
+            that.$.overlay.close();
+            that.$.countdown.pauze = false;
           });
 
           this.$.ouropgave.addEventListener('einde', function(e){
-
+              that.$.overlay.close();
             that.$.quizscenes.selected++;
             var fredRankRef = new Firebase('https://quistar.firebaseio.com/'+that.quizFBId+'/0/plays');
 

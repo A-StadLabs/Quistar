@@ -2,41 +2,37 @@
 <link rel="import" href="../../bower_components/core-icon-button/core-icon-button.html">
 <link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
 <link rel="import" href="../../bower_components/core-selector/core-selector.html">
-
-<!--
-<link rel="import" href="../../bower_components/core-animated-pages/slide-from-right.html">
-<link rel="import" href="../../bower_components/core-animated-pages/cross-fade.html">
--->
 <link rel="import" href="../../bower_components/core-animated-pages/transitions/slide-up.html">
 
 <polymer-element name="our-opgave" attributes="vragen">
 
 <template>
-  <link rel="stylesheet" href="our-opgave2.css">
+  <link rel="stylesheet" href="our-opgave.css">
+
   <core-animated-pages selected="0" id="opgaveScenes" fit transitions="slide-from-right">
 
   <template repeat="{{ vraag, i in vragen }}">
     <section id="{{i}}">
     <div class="opgave">
-      <div class="quizcardcontainer" horizontal layout center center-justified flex>
-      <div class="opgaveimgcont" hidden?="{{!vraag.img}}" vertical center-justified><img src="{{vraag.img}}"  class="opgaveimage"></div>
-      <br />
+      <div class="quizcardcontainer" vertical layout center center-justified flex>
+      <div class="opgaveimgcont" hidden?="{{!vraag.img}}" vertical center-justified><img src="{{vraag.img}}" class="opgaveimage"></div>
+      <div>
       <h2>{{vraag.vraag}}</h2>
+      </div>
       </div>
     </div>
     <div>
       <core-selector id="antwoordSelector" selected="{{selectedAntwoord}}" valueattr="id" on-core-activate="{{geefAntwoord}}" vertical layout center>
-      <core-icon-button id="1" juist="{{vraag.juiste}}" antwoord="{{antwoord.antwoord}}"  class="{{ {  juisteAntwoord: selectedAntwoord == vraag.juiste} | tokenList}} antwoord">{{ vraag.antwoorden.antwoord1 }}</core-icon-button>
-      <core-icon-button id="2" juist="{{vraag.juiste}}" antwoord="{{antwoord.antwoord}}"  class="{{ {  juisteAntwoord: selectedAntwoord == vraag.juiste} | tokenList}} antwoord">{{ vraag.antwoorden.antwoord2 }}</core-icon-button>
-      <core-icon-button id="3" juist="{{vraag.juiste}}" antwoord="{{antwoord.antwoord}}" class="{{ {  juisteAntwoord: selectedAntwoord == vraag.juiste} | tokenList}} antwoord">{{ vraag.antwoorden.antwoord3 }}</core-icon-button>
-      </template>
+        <core-icon-button id="1" juist="{{vraag.juiste}}" antwoord="{{antwoord.antwoord}}">{{ vraag.antwoorden.antwoord1 }}</core-icon-button>
+        <core-icon-button id="2" juist="{{vraag.juiste}}" antwoord="{{antwoord.antwoord}}">{{ vraag.antwoorden.antwoord2 }}</core-icon-button>
+        <core-icon-button id="3" juist="{{vraag.juiste}}" antwoord="{{antwoord.antwoord}}">{{ vraag.antwoorden.antwoord3 }}</core-icon-button>
       </core-selector>
     </div>
     </section>
-
   </template>
 
 </core-animated-pages>
+
 </template>
 <script>
   (function () {
@@ -46,32 +42,29 @@
       ready: function(){
         this.selectedAntwoord = -1;
         this.$.opgaveScenes.selected = 0;
-
       },
       vragenChanged: function(){
         console.log('-------VRAGEN---- ',JSON.stringify(this.vragen));
       },
       geefAntwoord: function(e){
-        //console.log('Gegeven antwoord is: ', e.detail.item.attributes[1].value);
-        
-        // hier komt de logica om te zien of het antwoord goed of fout is
-        // tot hier dan de logica.
         var that = this;
         console.log(that.selectedAntwoord);
-setTimeout(function(){ 
+        // hier timer pauze
+        that.fire('pausetimer');
         that.fire('addscore', {antwoordis: that.selectedAntwoord, juisteis: e.detail.item.attributes[1].value});
 
- 
-         
+setTimeout(function(){ 
+        
         if(that.$.opgaveScenes.selected<6){
-        that.$.opgaveScenes.selected++;
+          that.$.opgaveScenes.selected++;
+          that.fire('starttimer');
         
       } else {
-        that.fire('einde');
-        that.$.opgaveScenes.selected = 0;
+          that.fire('einde');
+          that.$.opgaveScenes.selected = 0;
       }
-        that.selectedAntwoord = -1;
-      }, 500);
+          that.selectedAntwoord = -1;
+      }, 1000);
       }
 
       

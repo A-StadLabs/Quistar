@@ -1,20 +1,19 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
-<link rel="import" href="../../bower_components/google-signin/google-signin.html">
+<link rel="import" href="../../elements/file-upload/file-upload.html">
+
 
 <polymer-element name="our-leaderentry" attributes="score quizobject quizId quizFBId">
   <template>
     <link rel="stylesheet" href="our-leaderentry.css">
 
-<google-signin width="iconOnly" clientId="719285224024-av2evld3lehrtsh3ef0eki055paumcpr.apps.googleusercontent.com" scopes="profile" id="gsign"></google-signin>
 
    <core-ajax method="POST" id="entryPost" handleAs="json" data url="https://quistar.firebaseio.com/{{quizFBId}}/0/leaderboard.json">
 </core-ajax>
-  <template id="profile" bind="{{ profile }}">
-      <h1>{{nickname}}</h1>
-      <img src="{{image.url}}" class="avatar" />
+      <input id="naam" value="{{nickname}}">
+      <file-upload imgval="{{showme}}" id="img1"></file-upload>
+      <img src="{{showme}}" width="50">
       <core-icon-button icon="arrow-forward" on-tap="{{addLeaderboard}}">Bewaar mijn score</core-icon-button>
-    </template>
   </template>
   <script>
 
@@ -26,45 +25,15 @@
       Polymer({
         ready: function(){
 
-          this.userobject = {};
-
-          var that = this;
-
-          this.addEventListener('google-signin-success', function(e){
-            console.log('test is dit fired?');
-            gapi.client.load('plus', 'v1', function() {
-            // To retreive profile information for a user, use the
-            // people.get API method. For profile info for the currently
-            // authorized user, use the userId value of me.
-            var request = gapi.client.plus.people.get({
-                'userId': 'me'
-            });
-
-            request.execute(function(resp) {
-                // Some useful profile information is now available
-                // via the returned object (resp). For example, we
-                // can discover the displayName, skills and so on.
-                //console.log(resp);
-
-                // This data can then be rendered into a template:
-                var t = that.$.profile;
-                t.model = {};
-                t.model.profile = resp;
-                that.userobject = resp;
-            });
-        });
-          });
-
         },
 
         addLeaderboard: function(){
 
         //this.leaderboard = this.quizobject.leaderboard;
 
-        this.naam =this.userobject.displayName;
 
-        this.data = { "naam": this.naam,
-                      "avatar": this.userobject.image.url,
+        this.data = { "naam": this.nickname,
+                      "avatar": this.showme,
                       "score": this.score
                     };
         this.data = JSON.stringify(this.data);

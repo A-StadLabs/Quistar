@@ -10,6 +10,8 @@
 <link rel="import" href="../../bower_components/core-selector/core-selector.html">
 <link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
 <link rel="import" href="../../bower_components/core-animated-pages/transitions/slide-from-right.html">
+<link rel="import" href="../../elements/file-upload/file-upload.html">
+
 
 
 <polymer-element name="our-quizmaker" attributes="username">
@@ -35,6 +37,8 @@
           <div class="container">
             <h1>Opdracht 1</h1>
             <paper-input label="Wat is de vraag?" id="quizVraag1"></paper-input>
+            <file-upload imgval="{{showme1}}" id="img1"></file-upload>
+            <img src="{{showme1}}" width="50">
             <paper-input label="Antwoord 1" id="opdracht1antwoord1"></paper-input>
             <paper-input label="Antwoord 2" id="opdracht1antwoord2"></paper-input>
             <paper-input label="Antwoord 3" id="opdracht1antwoord3"></paper-input>
@@ -51,6 +55,8 @@
           <div class="container">
             <h1>Opdracht 2</h1>
             <paper-input label="Wat is de vraag?" id="quizVraag2"></paper-input>
+            <file-upload imgval="{{showme2}}" id="img2"></file-upload>
+            <img src="{{showme2}}" width="50">
             <paper-input label="Antwoord 1" id="opdracht2antwoord1"></paper-input>
             <paper-input label="Antwoord 2" id="opdracht2antwoord2"></paper-input>
             <paper-input label="Antwoord 3" id="opdracht2antwoord3"></paper-input>
@@ -67,6 +73,8 @@
           <div class="container">
             <h1>Opdracht 3</h1>
             <paper-input label="Wat is de vraag?" id="quizVraag3"></paper-input>
+            <file-upload imgval="{{showme3}}" id="img3"></file-upload>
+            <img src="{{showme3}}" width="50">
             <paper-input label="Antwoord 1" id="opdracht3antwoord1"></paper-input>
             <paper-input label="Antwoord 2" id="opdracht3antwoord2"></paper-input>
             <paper-input label="Antwoord 3" id="opdracht3antwoord3"></paper-input>
@@ -83,6 +91,8 @@
           <div class="container">
             <h1>Opdracht 4</h1>
             <paper-input label="Wat is de vraag?" id="quizVraag4"></paper-input>
+            <file-upload imgval="{{showme4}}" id="img4"></file-upload>
+            <img src="{{showme4}}" width="50">
             <paper-input label="Antwoord 1" id="opdracht4antwoord1"></paper-input>
             <paper-input label="Antwoord 2" id="opdracht4antwoord2"></paper-input>
             <paper-input label="Antwoord 3" id="opdracht4antwoord3"></paper-input>
@@ -99,6 +109,8 @@
           <div class="container">
             <h1>Opdracht 5</h1>
             <paper-input label="Wat is de vraag?" id="quizVraag5"></paper-input>
+            <file-upload imgval="{{showme5}}" id="img5"></file-upload>
+            <img src="{{showme5}}" width="50">
             <paper-input label="Antwoord 1" id="opdracht5antwoord1"></paper-input>
             <paper-input label="Antwoord 2" id="opdracht5antwoord2"></paper-input>
             <paper-input label="Antwoord 3" id="opdracht5antwoord3"></paper-input>
@@ -115,6 +127,8 @@
           <div class="container">
             <h1>Opdracht 6</h1>
             <paper-input label="Wat is de vraag?" id="quizVraag6"></paper-input>
+            <file-upload imgval="{{showme6}}" id="img6"></file-upload>
+            <img src="{{showme6}}" width="50">
             <paper-input label="Antwoord 1" id="opdracht6antwoord1"></paper-input>
             <paper-input label="Antwoord 2" id="opdracht6antwoord2"></paper-input>
             <paper-input label="Antwoord 3" id="opdracht6antwoord3"></paper-input>
@@ -131,6 +145,8 @@
           <div class="container">
             <h1>Opdracht 7</h1>
             <paper-input label="Wat is de vraag?" id="quizVraag7"></paper-input>
+            <file-upload imgval="{{showme7}}" id="img7"></file-upload>
+            <img src="{{showme7}}" width="50">
             <paper-input label="Antwoord 1" id="opdracht7antwoord1"></paper-input>
             <paper-input label="Antwoord 2" id="opdracht7antwoord2"></paper-input>
             <paper-input label="Antwoord 3" id="opdracht7antwoord3"></paper-input>
@@ -191,6 +207,7 @@
 
           this.opgaven.push({
             'vraag': that.$.quizVraag1.value, 
+            'img': that.$.img1.imgval,
             'juiste': that.$.juiste1.selected+1,
             'antwoorden': {
               'antwoord1': that.$.opdracht1antwoord1.value,
@@ -201,6 +218,7 @@
           
           this.opgaven.push({  
             'vraag': that.$.quizVraag2.value, 
+            'img': that.$.img2.imgval,
             'juiste': that.$.juiste2.selected+1,
             'antwoorden': {
               'antwoord1': that.$.opdracht2antwoord1.value,
@@ -211,6 +229,7 @@
           
           this.opgaven.push({  
             'vraag': that.$.quizVraag3.value, 
+            'img': that.$.img3.imgval,
             'juiste': that.$.juiste3.selected+1,
             'antwoorden': {
               'antwoord1': that.$.opdracht3antwoord1.value,
@@ -221,6 +240,7 @@
           
           this.opgaven.push({  
             'vraag': that.$.quizVraag4.value, 
+            'img': that.$.img4.imgval,
             'juiste': that.$.juiste4.selected+1,
             'antwoorden': {
               'antwoord1': that.$.opdracht4antwoord1.value,
@@ -231,6 +251,7 @@
           
           this.opgaven.push({  
             'vraag': that.$.quizVraag5.value, 
+            'img': that.$.img5.imgval,
             'juiste': that.$.juiste5.selected+1,
             'antwoorden': {
               'antwoord1': that.$.opdracht5antwoord1.value,
@@ -241,6 +262,7 @@
           
           this.opgaven.push({  
             'vraag': that.$.quizVraag6.value, 
+            'img': that.$.img6.imgval,
             'juiste': that.$.juiste6.selected+1,
             'antwoorden': {
               'antwoord1': that.$.opdracht6antwoord1.value,
@@ -251,6 +273,7 @@
           
           this.opgaven.push({  
             'vraag': that.$.quizVraag7.value, 
+            'img': that.$.img7.imgval,
             'juiste': that.$.juiste7.selected+1,
             'antwoorden': {
               'antwoord1': that.$.opdracht7antwoord1.value,

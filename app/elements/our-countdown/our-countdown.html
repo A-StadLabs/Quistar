@@ -2,7 +2,7 @@
 <link rel="import" href="../../bower_components/paper-progress/paper-progress.html">
 
 
-<polymer-element name="our-countdown" attributes="timer start">
+<polymer-element name="our-countdown" attributes="timer start pauze">
   <template>
     <link rel="stylesheet" href="our-countdown.css">
     <paper-progress value="{{timer}}" max="1000"></paper-progress>
@@ -15,19 +15,20 @@
         // define element prototype here
         ready: function(){
           //this.resttijd = 5;
+          this.pauze = false;
+        },
+
+        pauze: function(){
+          console.log('timer paused');
+          this.pauze = true;
         },
 
         startChanged: function(){
-          console.log('timer loopt');
-          
           var tijd = this.timer;
-          console.log('Tijd is: '+tijd);
           var that = this;
           var aftellen = setInterval(function() {
-          if(that.timer>0){
+          if(that.timer>0&&that.pauze==false){
             that.timer--;
-            // that.resttijd = this.timer;
-            //console.log(that.timer+'hoeveel');
           };
         }, 10);
         }
