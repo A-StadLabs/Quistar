@@ -37,11 +37,11 @@
 
     </div>
     <div>
-    <core-selector id="quizSelector" valueattr="quizId" on-core-activate="{{selectQuiz}}" fit>
+    <core-selector id="quizSelector" valueattr="quizKey" on-core-activate="{{selectQuiz}}" fit>
   
     <template repeat="{{ quiz, i in quizzes }}">
-      <template repeat="{{ q in quiz }}">
-        <our-quizcard quizTitel="{{ q.quiztitel }}" quizPlays="{{q.plays}}" quizDescr="{{ q.quizdescr }}" quizId="{{i}}"></our-quizcard>
+      <template repeat="{{ q in quiz.data }}">
+        <our-quizcard quizTitel="{{ q.quiztitel }}" quizPlays="{{q.plays}}" quizDescr="{{ q.quizdescr }}" quizId="{{i}}" quizKey="{{quiz.key}}"></our-quizcard>
       </template>
     </template>
   </core-selector>
@@ -94,7 +94,8 @@
           for (var i = 0; i <= this.keys.length; i++) {
             //console.log(this.keys[i]);
             var j = this.keys[i];
-            this.quizzes.push(this.data[j]);
+            this.quizzes.push({'key': this.keys[i], 'data':this.data[j]});
+            //console.log('key: ',this.keys[i], ' data :',this.data[j]);
           };
 
           //console.log('quizzes:', JSON.stringify(this.quizzes));
@@ -111,10 +112,11 @@
 
         selectQuiz: function(){
           this.quizSelected = this.$.quizSelector.selectedItem.quizId;
-          this.quizObject = this.quizzes[this.quizSelected];
+          this.quizObject = this.quizzes[this.quizSelected].data;
+          //console.log(this.quizObject);
           this.$.scenes.selected = 1;
-          console.log('QuizId: ',this.quizSelected);
-          console.log('FBid: ',this.keys[this.quizSelected]);
+          //console.log('QuizId: ',this.quizSelected);
+          //console.log('FBid: ',this.keys[this.quizSelected]);
           this.quizFBId = this.keys[this.quizSelected];
           this.quizId = this.quizSelected;
         },

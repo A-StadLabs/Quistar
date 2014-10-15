@@ -1,9 +1,15 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/core-collapse/core-collapse.html">
+<link rel="import" href="../../bower_components/firebase-element/firebase-element.html">
 
 
-<polymer-element name="our-quizcard" attributes="quizTitel quizDescr quizId qcOpen quizPlays">
+<link rel="import" href="../../bower_components/firebase-element/firebase-element.html">
+
+<polymer-element name="our-quizcard" attributes="quizTitel quizDescr quizId qcOpen quizPlays quizKey">
   <template>
+
+   <firebase-element id="base" location="https://quistar.firebaseio.com/{{quizKey}}/0/leaderboard/" data="{{data}}" keys="{{keys}}" on-data-change="{{readData}}" log></firebase-element>
+
     <link rel="stylesheet" href="our-quizcard.css">
     <div horizontal layout center class="quizcardcontainer">
       <div flex>
@@ -12,7 +18,7 @@
       <div class="plays">{{quizPlays}}</div>
       <img class="gray" src="../../images/STER-yellow.svg">
       <div>
-        <img class="avatar" src="../../images/users/tom.jpg">
+        <img class="avatar" src="{{avatar}}">
       </div>
     </div>
   </template>
@@ -23,15 +29,29 @@
       Polymer({
         // define element prototype here
         ready: function(){
-          this.qcOpen = '';
-          this.addEventListener('closeAll', function(){
-            this.$.collapse.toggle();
-            console.log('I heard you.');
-          })
+
+        },
+
+        quizTitelChanged: function(){
+          console.log('quizkey: ', this.quizKey);
         },
 
         startQuiz: function(){
           this.fire('startquiz');
+        },
+
+        readData: function(){
+          //console.log('leaderboard: ',JSON.stringify(this.data));
+          this.leaderboard = [];
+          //console.log('Leaderboard keys: ', JSON.stringify(this.keys));
+          for (var i = this.keys.length - 1; i >= 0; i--) {
+            var j = this.keys[i];
+            this.leaderboard.push({'naam': this.data[j].naam, 'score': this.data[j].score, 'avatar': this.data[j].avatar});
+               //console.log('naam: ',this.data[j].naam);
+               //console.log('naam: ',this.data[j].score);
+            };
+            this.leaderboard.sort(function(a,b){ return b.score - a.score});
+            this.avatar = this.leaderboard[0].avatar;
         }
 
       });
