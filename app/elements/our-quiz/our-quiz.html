@@ -37,7 +37,9 @@
     <div class="card">
       <div class="quizcardcontainer">
       <h1>{{quizObject.quiztitel}}</h1>
+      <p class="small">Door {{quizObject.ownernick}}</p>
       <p>{{quizObject.quizdescr}}</p>
+
       <core-icon-button icon="arrow-forward" on-tap="{{startQuiz}}" class="startbutton">START DE QUIZ</core-icon-button>
       </div>
 

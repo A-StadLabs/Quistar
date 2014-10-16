@@ -98,7 +98,8 @@
             //console.log('key: ',this.keys[i], ' data :',this.data[j]);
           };
 
-          //console.log('quizzes:', JSON.stringify(this.quizzes));
+          this.quizzes.sort(function(a,b){ return b.data - a.data})
+          //console.log('quizzes:', JSON.stringify(this.quizzes[0]));
 
 
 

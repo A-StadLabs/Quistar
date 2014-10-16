@@ -8,7 +8,7 @@
 <polymer-element name="our-quizcard" attributes="quizTitel quizDescr quizId qcOpen quizPlays quizKey">
   <template>
 
-   <firebase-element id="base" location="https://quistar.firebaseio.com/{{quizKey}}/0/leaderboard/" data="{{data}}" keys="{{keys}}" on-data-change="{{readData}}" log></firebase-element>
+   <firebase-element id="base" location="https://quistar.firebaseio.com/{{quizKey}}/0/leaderboard/" data="{{data}}" keys="{{keys}}" on-data-change="{{readData}}"></firebase-element>
 
     <link rel="stylesheet" href="our-quizcard.css">
     <div horizontal layout center class="quizcardcontainer">
@@ -33,7 +33,7 @@
         },
 
         quizTitelChanged: function(){
-          console.log('quizkey: ', this.quizKey);
+          //console.log('quizkey: ', this.quizKey);
         },
 
         startQuiz: function(){

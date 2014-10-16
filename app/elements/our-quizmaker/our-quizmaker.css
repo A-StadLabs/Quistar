@@ -33,3 +33,7 @@ line-height: 0px;
 .right {
 	text-align: center;
 }
+
+.small {
+	font-size: 10px;
+}

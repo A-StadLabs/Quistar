@@ -11,6 +11,7 @@
 <link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
 <link rel="import" href="../../bower_components/core-animated-pages/transitions/slide-from-right.html">
 <link rel="import" href="../../elements/file-upload/file-upload.html">
+<link rel="import" href="../../bower_components/google-signin/google-signin.html">
 
 
 
@@ -27,7 +28,19 @@
         <div class="card">
           <div class="container">
             <h1>Maak zelf een Quistar</h1>
+            <p>Meld je eerst aan met een google account. Zo weten de spelers wie de Quistar heeft gemaakt.</p>
+            <google-signin width="iconOnly" clientId="719285224024-av2evld3lehrtsh3ef0eki055paumcpr.apps.googleusercontent.com" scopes="profile" id="gsign"></google-signin>
+          </div>
+        </div>
+        </section>
+        <section>
+        <div class="card">
+          <div class="container">
+            <h1>Maak zelf een Quistar</h1>
             <p>Een Quistar quiz heeft altijd 7 vragen met 3 antwoorden per vraag.</p>
+            <template id="profile" bind="{{ profile }}">
+              <p class="small">Je bent aangemeld als {{displayName}}.</p>
+            </template>
             <paper-input label="Naam van Quiz" id="quizNaam"></paper-input>
             <paper-input label="Korte beschrijving" id="quizDescr" multiline></paper-input>
           </div>
@@ -190,8 +203,38 @@
 
       Polymer({
         ready: function(){
+          this.userobject = {};
+
+          var that = this;
+
+          this.addEventListener('google-signin-success', function(e){
+            console.log('test is dit fired?');
+            gapi.client.load('plus', 'v1', function() {
+            // To retreive profile information for a user, use the
+            // people.get API method. For profile info for the currently
+            // authorized user, use the userId value of me.
+            var request = gapi.client.plus.people.get({
+                'userId': 'me'
+            });
+
+            request.execute(function(resp) {
+                // Some useful profile information is now available
+                // via the returned object (resp). For example, we
+                // can discover the displayName, skills and so on.
+                console.log(resp);
+
+                // This data can then be rendered into a template:
+                var t = that.$.profile;
+                t.model = {};
+                t.model.profile = resp;
+
+                that.userobject = resp;
+                that.$.animated.selected = 1;
+            });
+        });
+          });
+
           this.nieuwequiz = [];
-          this.username = 'king flurkel';
           console.log('----- quizobject: ', JSON.stringify(this.nieuwequiz));
         },
 
@@ -289,6 +332,8 @@
             'quizdescr': that.$.quizDescr.value,
             'published': 'nope',
             'plays': 0,
+            'ownernick': that.userobject.displayName,
+            'owneravatar': that.userobject.image.url,
             'opgaven': this.opgaven
           });
 

@@ -28,11 +28,18 @@
   </script>
   <!-- build:vulcanized elements/elements.vulcanized.html -->
   <link rel="import" href="elements/our-stage/our-stage.html">
+    <link rel="import" href="bower_components/app-router/app-router.html">
+
   <!-- endbuild-->
 </head>
 
 <body unresolved fullbleed>
-<our-stage fit></our-stage>
+<app-router>
+<app-route path="/" import="../../elements/our-stage/our-stage.html"></app-route>
+<app-route path="/quiz/:quizFBId/" import="../../elements/our-quiz/our-quiz.html"></app-route>
+<!-- <fns-gamestage id="stage"></fns-gamestage> -->
+
+</app-router>
   <!-- build:js scripts/app.js -->
   <script src="scripts/app.js"></script>
 <script>

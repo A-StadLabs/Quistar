@@ -27,6 +27,9 @@
 	width: 100%;
 }
 
+.small {
+	font-size: 13px;
+}
 
 #progressContainter {
 	width: 100px;
