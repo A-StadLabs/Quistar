@@ -5,6 +5,7 @@
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="../../bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="../../bower_components/paper-toggle-button/paper-toggle-button.html">
 <link rel="import" href="../../bower_components/paper-radio-group/paper-radio-group.html">
 <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
 <link rel="import" href="../../bower_components/core-selector/core-selector.html">
@@ -43,6 +44,7 @@
             </template>
             <paper-input label="Naam van Quiz" id="quizNaam"></paper-input>
             <paper-input label="Korte beschrijving" id="quizDescr" multiline></paper-input>
+            <p>Zichtbaar in overzicht?  <paper-toggle-button id="publicQuiz"></paper-toggle-button></p>
           </div>
         </div>
 
@@ -186,7 +188,9 @@
             <div class="card">
           <div class="container">
             <h1>Jouw Quistar is klaar.</h1>
-            <p>Je vindt jouw Quistar terug in het overzicht.</p>
+            <p>Je vindt jouw Quistar terug op deze url:</p>
+            <input flex value="https://quistar.firebaseapp.com/#/quiz/{{quizName}}/" onClick="this.select();" class="URLfield">
+            <a href="https://quistar.firebaseapp.com/#/quiz/{{quizName}}/">https://quistar.firebaseapp.com/#/quiz/{{quizName}}/</a>
             <p>Vragen? @astadlabs</p>
           </div>
         </div>
@@ -195,7 +199,7 @@
       </core-animated-pages>
 
     </core-header-panel>
-    <core-ajax method="POST" id="quizPost" handleAs="json" data url="https://quistar.firebaseio.com/.json">
+    <core-ajax method="POST" id="quizPost" handleAs="json" data url="https://quistar.firebaseio.com/.json" on-core-response="{{ajaxResponse}}">
   </template>
   <script>
     (function () {
@@ -208,7 +212,6 @@
           var that = this;
 
           this.addEventListener('google-signin-success', function(e){
-            console.log('test is dit fired?');
             gapi.client.load('plus', 'v1', function() {
             // To retreive profile information for a user, use the
             // people.get API method. For profile info for the currently
@@ -221,7 +224,7 @@
                 // Some useful profile information is now available
                 // via the returned object (resp). For example, we
                 // can discover the displayName, skills and so on.
-                console.log(resp);
+                //console.log(resp);
 
                 // This data can then be rendered into a template:
                 var t = that.$.profile;
@@ -235,7 +238,7 @@
           });
 
           this.nieuwequiz = [];
-          console.log('----- quizobject: ', JSON.stringify(this.nieuwequiz));
+          //console.log('----- quizobject: ', JSON.stringify(this.nieuwequiz));
         },
 
         saveQuiz: function(){
@@ -325,12 +328,10 @@
             }
           });
 
-          
-
           this.nieuwequiz.push({ 
             'quiztitel': that.$.quizNaam.value,
             'quizdescr': that.$.quizDescr.value,
-            'published': 'nope',
+            'published': that.$.publicQuiz.checked,
             'plays': 0,
             'ownernick': that.userobject.displayName,
             'owneravatar': that.userobject.image.url,
@@ -362,6 +363,11 @@
         exit: function(){
           this.$.animated.selected=0;
           this.fire('exit');
+        },
+
+        ajaxResponse: function(e){
+          console.log('response: ',e.detail.response.name);
+          this.quizName = e.detail.response.name;
         }
       });
 

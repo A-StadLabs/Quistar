@@ -37,3 +37,14 @@ line-height: 0px;
 .small {
 	font-size: 10px;
 }
+
+.URLfield {
+	background-color: #404040;
+	border: none;
+}
+
+.URLfield:focus {
+	background-color: white;
+	border: none;
+	outline:0 !important;
+}

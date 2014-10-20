@@ -11,9 +11,7 @@
 <link rel="import" href="../../bower_components/core-animated-pages/transitions/cross-fade.html">
 <link rel="import" href="../../bower_components/core-header-panel/core-header-panel.html">
 <link rel="import" href="../../elements/our-quizmaker/our-quizmaker.html">
-
 <link rel="import" href="../../bower_components/firebase-element/firebase-element.html">
-
 
 
 <polymer-element name="our-scenes" attributes="">
@@ -23,7 +21,7 @@
 <template>
   <!-- <core-ajax url="https://quistar.firebaseio.com/.json" handleAs="json" id="getAjax" data="{{data}}" keys="{{keys}}" on-core-response="{{handleResponse}}" auto></core-ajax> -->
 
-  <firebase-element id="base2" location="https://quistar.firebaseio.com/" data="{{data}}" keys="{{keys}}" on-data-change="{{handleResponse}}"></firebase-element>
+  <firebase-element id="base2" location="https://quistar.firebaseio.com/" data="{{data}}" keys="{{keys}}" limit on-data-change="{{handleResponse}}"></firebase-element>
 
   <link rel="stylesheet" href="our-scenes.css">
   <core-animated-pages fit selected="" id="scenes" transitions="slide-from-right" vertical layout center>
@@ -94,7 +92,11 @@
           for (var i = 0; i <= this.keys.length; i++) {
             //console.log(this.keys[i]);
             var j = this.keys[i];
+            this.tempData = this.data[j];
+            console.log('publiek? ',this.tempData[0].published);
+            if(this.tempData[0].published==true){
             this.quizzes.push({'key': this.keys[i], 'data':this.data[j]});
+          }
             //console.log('key: ',this.keys[i], ' data :',this.data[j]);
           };
 

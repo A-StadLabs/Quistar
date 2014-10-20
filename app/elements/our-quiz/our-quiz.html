@@ -12,14 +12,16 @@
 <link rel="import" href="../../bower_components/core-transition/core-transition-css.html">
 <link rel="import" href="../../bower_components/core-overlay/core-overlay.html">
 
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
+
 <polymer-element name="our-quiz" attributes="quizObject quizId quizFBId">
   <template>
   <style>
 .card { background-color: #68BB88; }
   </style>
 
-</core-ajax>
     <link rel="stylesheet" href="our-quiz.css">
+    <core-ajax id="ajaxer" url="https://quistar.firebaseio.com/{{quizFBId}}/.json" on-core-response="{{ajaxResponse}}" response="{{dataObject}}"></core-ajax>
     <core-animated-pages id="quizscenes" selected="0" fit transitions="slide-from-right">
     <section>
     <core-header-panel mode="waterfall" fit>
@@ -100,6 +102,7 @@
     <h2>Jouw score is </h2>
     <h1 class="scoretag">{{score}}</h1>
     <our-leaderentry id="leaderentry" score="{{score}}" quizobject="{{quizObject}}" quizId="{{quizId}}" quizFBId="{{quizFBId}}"></our-leaderentry>
+    <a href="/">Naar overzicht</a>
     </div>
 
     <our-leaderboard quizobject="{{quizObject.leaderboard}}" quizId="{{quizFBId}}" quizFBId="{{quizFBId}}"></our-leaderboard>
@@ -120,6 +123,7 @@
         // define element prototype here
         ready: function(){
           //this.$.quizscenes.selected = 2;
+          this.$.ajaxer.go();
           this.score = 0;
           this.tijd = 1000;
           var that = this;
@@ -139,12 +143,12 @@
           });
 
           this.$.ouropgave.addEventListener('pausetimer', function(e){
-            console.log('pauze timer');
+            //console.log('pauze timer');
             that.$.countdown.pauze = true;
           });
 
           this.$.ouropgave.addEventListener('starttimer', function(e){
-            console.log('start timer');
+            //console.log('start timer');
             that.$.countdown.timer = 1000;
             that.$.overlay.close();
             that.$.countdown.pauze = false;
@@ -183,7 +187,18 @@
           // console.log('---quizobject: ', this.quizId);
           // console.log('leaderboard uit quiz: ', this.quizObject.leaderboard);
 
+        },
+
+        quizFBIdChanged: function(){
+          this.$.ajaxer.go();
+        },
+
+        ajaxResponse: function(e){
+          this.quizObject = e.detail.response[0];
+          console.log('doet em iet? ',e.detail.response[0]);
         }
+
+
       });
 
     })();
