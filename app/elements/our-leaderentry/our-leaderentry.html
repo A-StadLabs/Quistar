@@ -1,6 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
-<link rel="import" href="../../elements/file-upload/file-upload.html">
+<link rel="import" href="../../elements/image-upload/image-upload.html">
 
 
 <polymer-element name="our-leaderentry" attributes="score quizobject quizId quizFBId">
@@ -11,8 +11,7 @@
    <core-ajax method="POST" id="entryPost" handleAs="json" data url="https://quistar.firebaseio.com/{{quizFBId}}/0/leaderboard.json">
 </core-ajax>
       <input id="naam" value="{{nickname}}">
-      <file-upload imgval="{{showme}}" id="img1"></file-upload>
-      <img src="{{showme}}" width="50">
+      <image-upload id="img1" dataurl="{{showme}}" maxw="100" maxh="100" label="Kies een bestand"></image-upload>
       <core-icon-button icon="arrow-forward" on-tap="{{addLeaderboard}}">Bewaar mijn score</core-icon-button>
   </template>
   <script>

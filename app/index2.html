@@ -3,12 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Quistar</title>
+  <title>upload test</title>
 
-  
+    <script type="text/javascript" src="scripts/JavaScript-Load-Image/js/load-image.all.min.js"></script>
 
-  <script src="bower_components/platform/platform.js"></script>
-  <link rel="import" href="bower_components/google-signin/google-signin.html">
+
 
   <!-- build:vulcanized elements/elements.vulcanized.html -->
   <!-- endbuild-->
@@ -16,68 +15,21 @@
 
 <body>
 <h1>TEST</h1>
-<google-signin width="iconOnly" clientId="719285224024-hfqn4j36nerq1ai5q612qrkq4pnoi6q5.apps.googleusercontent.com" scopes="profile" id="gsign"></google-signin>
-<template id="profile" bind="{{ profile }}">
-    <div class="card">
-        <h1><strong>{{displayName}}</strong></h1>
-        <h2>Is currently signed-in</h2>
-        <div class="map">
-          <p>
-              <strong>Gender</strong> {{gender}}
-          </p>
-          <p>
-              <strong>Skills</strong> {{skills}}
-          </p>
-          <p>
-              <strong>Avatar</strong>
-              <p>
-                  <img src="{{image.url}}" />
-              </p>
-          </p>
-          <p>
-              <strong>G+ URL</strong> <a href="{{url}}">{{url}}</a>
-          </p>
-        </div>
-    </div>
-    </template>
+<input type="file" id="file-input">
 
 <script>
 
-document.addEventListener("google-signin-success", function(e) {
-        // Access the GAPI instance passed back from authorization
-        //var gapi = e.detail.gapi;
+document.getElementById('file-input').onchange = function (e) {
+    loadImage(
+        e.target.files[0],
+        function (img) {
+            document.body.appendChild(img);
+        },
+        {maxWidth: 100,
+        noRevoke: true} // Options
+    );
+};
 
-        // Load V1 of the G+ API
-        gapi.client.load('plus', 'v1', function() {
-            // To retreive profile information for a user, use the
-            // people.get API method. For profile info for the currently
-            // authorized user, use the userId value of me.
-            var request = gapi.client.plus.people.get({
-                'userId': 'me'
-            });
-
-            request.execute(function(resp) {
-                // Some useful profile information is now available
-                // via the returned object (resp). For example, we
-                // can discover the displayName, skills and so on.
-                console.log(resp);
-
-                // This data can then be rendered into a template:
-                var t = document.querySelector("#profile");
-                t.model = {};
-                t.model.profile = resp;
-            });
-        });
-        document.querySelector("#status").innerHTML = "You are now signed in.";
-    });
-
-    document.addEventListener("google-signed-out", function() {
-        document.querySelector("#status").innerHTML = "You are now signed out.";
-    });
-
-    document.addEventListener("google-signout-attempted", function() {
-        document.querySelector("#status").innerHTML = "You attempted to sign out.";
-    });
 </script>
   <!-- endbuild-->
 </body>

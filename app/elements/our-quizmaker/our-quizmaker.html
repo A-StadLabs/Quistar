@@ -12,6 +12,7 @@
 <link rel="import" href="../../bower_components/core-animated-pages/core-animated-pages.html">
 <link rel="import" href="../../bower_components/core-animated-pages/transitions/slide-from-right.html">
 <link rel="import" href="../../elements/file-upload/file-upload.html">
+<link rel="import" href="../../elements/image-upload/image-upload.html">
 <link rel="import" href="../../bower_components/google-signin/google-signin.html">
 
 
@@ -52,8 +53,7 @@
           <div class="container">
             <h1>Opdracht 1</h1>
             <paper-input label="Wat is de vraag?" id="quizVraag1"></paper-input>
-            <file-upload imgval="{{showme1}}" id="img1"></file-upload>
-            <img src="{{showme1}}" width="50">
+            <image-upload id="img1" dataurl="{{showme1}}" maxw="400" maxh="400" label="Kies een bestand"></image-upload>
             <paper-input label="Antwoord 1" id="opdracht1antwoord1"></paper-input>
             <paper-input label="Antwoord 2" id="opdracht1antwoord2"></paper-input>
             <paper-input label="Antwoord 3" id="opdracht1antwoord3"></paper-input>
@@ -70,8 +70,7 @@
           <div class="container">
             <h1>Opdracht 2</h1>
             <paper-input label="Wat is de vraag?" id="quizVraag2"></paper-input>
-            <file-upload imgval="{{showme2}}" id="img2"></file-upload>
-            <img src="{{showme2}}" width="50">
+            <image-upload id="img2" dataurl="{{showme2}}" maxw="400" maxh="400" label="Kies een bestand"></image-upload>
             <paper-input label="Antwoord 1" id="opdracht2antwoord1"></paper-input>
             <paper-input label="Antwoord 2" id="opdracht2antwoord2"></paper-input>
             <paper-input label="Antwoord 3" id="opdracht2antwoord3"></paper-input>
@@ -88,8 +87,7 @@
           <div class="container">
             <h1>Opdracht 3</h1>
             <paper-input label="Wat is de vraag?" id="quizVraag3"></paper-input>
-            <file-upload imgval="{{showme3}}" id="img3"></file-upload>
-            <img src="{{showme3}}" width="50">
+            <image-upload id="img3" dataurl="{{showme3}}" maxw="400" maxh="400" label="Kies een bestand"></image-upload>
             <paper-input label="Antwoord 1" id="opdracht3antwoord1"></paper-input>
             <paper-input label="Antwoord 2" id="opdracht3antwoord2"></paper-input>
             <paper-input label="Antwoord 3" id="opdracht3antwoord3"></paper-input>
@@ -106,8 +104,7 @@
           <div class="container">
             <h1>Opdracht 4</h1>
             <paper-input label="Wat is de vraag?" id="quizVraag4"></paper-input>
-            <file-upload imgval="{{showme4}}" id="img4"></file-upload>
-            <img src="{{showme4}}" width="50">
+            <image-upload id="img4" dataurl="{{showme4}}" maxw="400" maxh="400" label="Kies een bestand"></image-upload>
             <paper-input label="Antwoord 1" id="opdracht4antwoord1"></paper-input>
             <paper-input label="Antwoord 2" id="opdracht4antwoord2"></paper-input>
             <paper-input label="Antwoord 3" id="opdracht4antwoord3"></paper-input>
@@ -124,8 +121,7 @@
           <div class="container">
             <h1>Opdracht 5</h1>
             <paper-input label="Wat is de vraag?" id="quizVraag5"></paper-input>
-            <file-upload imgval="{{showme5}}" id="img5"></file-upload>
-            <img src="{{showme5}}" width="50">
+            <image-upload id="img5" dataurl="{{showme5}}" maxw="400" maxh="400" label="Kies een bestand"></image-upload>
             <paper-input label="Antwoord 1" id="opdracht5antwoord1"></paper-input>
             <paper-input label="Antwoord 2" id="opdracht5antwoord2"></paper-input>
             <paper-input label="Antwoord 3" id="opdracht5antwoord3"></paper-input>
@@ -142,8 +138,7 @@
           <div class="container">
             <h1>Opdracht 6</h1>
             <paper-input label="Wat is de vraag?" id="quizVraag6"></paper-input>
-            <file-upload imgval="{{showme6}}" id="img6"></file-upload>
-            <img src="{{showme6}}" width="50">
+            <image-upload id="img6" dataurl="{{showme6}}" maxw="400" maxh="400" label="Kies een bestand"></image-upload>
             <paper-input label="Antwoord 1" id="opdracht6antwoord1"></paper-input>
             <paper-input label="Antwoord 2" id="opdracht6antwoord2"></paper-input>
             <paper-input label="Antwoord 3" id="opdracht6antwoord3"></paper-input>
@@ -160,8 +155,7 @@
           <div class="container">
             <h1>Opdracht 7</h1>
             <paper-input label="Wat is de vraag?" id="quizVraag7"></paper-input>
-            <file-upload imgval="{{showme7}}" id="img7"></file-upload>
-            <img src="{{showme7}}" width="50">
+            <image-upload id="img7" dataurl="{{showme7}}" maxw="400" maxh="400" label="Kies een bestand"></image-upload>
             <paper-input label="Antwoord 1" id="opdracht7antwoord1"></paper-input>
             <paper-input label="Antwoord 2" id="opdracht7antwoord2"></paper-input>
             <paper-input label="Antwoord 3" id="opdracht7antwoord3"></paper-input>
@@ -253,7 +247,7 @@
 
           this.opgaven.push({
             'vraag': that.$.quizVraag1.value, 
-            'img': that.$.img1.imgval,
+            'img': that.$.img1.dataurl,
             'juiste': that.$.juiste1.selected+1,
             'antwoorden': {
               'antwoord1': that.$.opdracht1antwoord1.value,
