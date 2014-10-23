@@ -2,7 +2,7 @@
 <link rel="import" href="../../bower_components/paper-progress/paper-progress.html">
 
 
-<polymer-element name="our-countdown" attributes="timer start pauze">
+<polymer-element name="our-countdown" attributes="timer start pauze rest">
   <template>
     <link rel="stylesheet" href="our-countdown.css">
     <paper-progress value="{{timer}}" max="1000"></paper-progress>
@@ -29,6 +29,7 @@
           var aftellen = setInterval(function() {
           if(that.timer>0&&that.pauze==false){
             that.timer--;
+            that.rest = Math.round(that.timer/100);
           };
         }, 10);
         }

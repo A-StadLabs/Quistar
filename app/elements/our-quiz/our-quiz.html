@@ -22,91 +22,115 @@
 
     <link rel="stylesheet" href="our-quiz.css">
     <core-ajax id="ajaxer" url="https://quistar.firebaseio.com/{{quizFBId}}/.json" on-core-response="{{ajaxResponse}}" response="{{dataObject}}"></core-ajax>
+
+
+
     <core-animated-pages id="quizscenes" selected="0" fit transitions="slide-from-right">
+    
     <section>
+    
     <core-header-panel mode="waterfall" fit>
+
     <core-toolbar id="backbutton">
     <div class="core-header" vertical layout>
       <div><core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}"></core-icon-button>
       </div>
       <div flex class="heading">
-        
       </div>
     </div>
     <div flex horizontal center-justified layout></div>
     </core-toolbar>
 
+    <div vertical layout center center-justified>
     <div class="card">
-      <div class="quizcardcontainer">
+      <div class="quizcardcontainer" vertical layout center center-justified>
       <h1>{{quizObject.quiztitel}}</h1>
-      <p class="small">Door {{quizObject.ownernick}}</p>
-      <p>{{quizObject.quizdescr}}</p>
+                  <p>{{quizObject.quizdescr}}</p>
 
-      <core-icon-button icon="arrow-forward" on-tap="{{startQuiz}}" class="startbutton">START DE QUIZ</core-icon-button>
+                  <p class="small">Door {{quizObject.ownernick}}</p>
+            <div on-tap="{{startQuiz}}" class="startbutton">START DE QUIZ</div>
+
       </div>
 
+
     </div>
 
-    <div>
+    <div class="leader">
     <our-leaderboard quizobject="{{quizObject.leaderboard}}" quizFBId="{{quizFBId}}"></our-leaderboard>
     </div>
+    </div>
+
     </core-header-panel>
     </section>
+
 
     <!-- Hier start de quiz -->
 
+
     <section>
+
     <core-header-panel mode="waterfall" fit>
 
     <core-toolbar id="controls">
-
-<div vertical layout fit>
-  <div horizontal layout stretch class="top-controls">
-    <div flex><core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}"></core-icon-button></div>
-    <div class="heading" end-justified>{{score}} </div>
-  </div>
-
-    <div self-center stretch>
-    <our-countdown timer="100" id="countdown"></our-countdown>
+    <div vertical layout fit>
+    <div horizontal layout center stretch class="top-controls">
+      <div flex><core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}"></core-icon-button></div>
+      <div flex id="tijdloop" horizontal layout center>  <img class="clockje" src="../../images/clockje.svg"> {{huidigetijd}}</div>
+      <div class="heading" end-justified>{{score}}</div>
     </div>
-</div>
+    <div self-center stretch>
+      <our-countdown timer="100" rest="{{huidigetijd}}" id="countdown"></our-countdown>
+    </div>
+    </div>
     </core-toolbar>
 
     <div vertical layout>
-
-    <core-overlay id="overlay" backdrop transition="core-transition-center">
+<!--     <core-overlay id="overlay" backdrop transition="core-transition-center">
       <div vertical layout center center-justified>
       +{{punten}}
       </div>
-    </core-overlay>
-
+    </core-overlay> -->
     <our-opgave vragen="{{quizObject.opgaven}}" id="ouropgave"></our-opgave>
     </div>
+
     </core-header-panel>
+
     </section>
+
+
+    <!-- Hier eindigt de quiz, wordt leaderboard getoond -->
+
 
     <section>
 
     <core-toolbar id="backbutton">
     <div class="core-header" vertical layout>
-      <div><core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}"></core-icon-button>
+      <div>
+        <core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}">
+        </core-icon-button>
       </div>
       <div flex class="heading">
-        
       </div>
     </div>
     <div flex horizontal center-justified layout></div>
     </core-toolbar>
+    
+    <div vertical layout center center-justified>
     <div class="card2">
-
     <h2>Jouw score is </h2>
     <h1 class="scoretag">{{score}}</h1>
     <our-leaderentry id="leaderentry" score="{{score}}" quizobject="{{quizObject}}" quizId="{{quizId}}" quizFBId="{{quizFBId}}"></our-leaderentry>
     <a href="/">Naar overzicht</a>
     </div>
 
+    <div class="leader">
     <our-leaderboard quizobject="{{quizObject.leaderboard}}" quizId="{{quizFBId}}" quizFBId="{{quizFBId}}"></our-leaderboard>
+    </div>
+    </div>
+    
     </section>
+
+
     </core-animated-pages>
   </template>
   <script>
@@ -123,24 +147,28 @@
         // define element prototype here
         ready: function(){
           //this.$.quizscenes.selected = 2;
+
           this.$.ajaxer.go();
           this.score = 0;
           this.tijd = 1000;
           var that = this;
+          // var lopendetijd = that.$.countdown.timer;
 
           this.$.ouropgave.addEventListener('addscore', function(e){
             // console.log('ANtwoord is: ',e.detail.antwoordis,' Juiste is: ', e.detail.juisteis);
             if(e.detail.antwoordis==e.detail.juisteis){
-             that.punten = Math.round(that.$.countdown.timer/10);
-            that.score = that.score+that.punten;
+             that.punten = Math.round(that.$.countdown.timer/100);
+            that.score = that.score+that.punten+10;
             that.score = Math.round(that.score);
-            that.$.overlay.open();
+            // that.$.overlay.open();
           } else {
             that.punten = 0;
-            that.$.overlay.open();
+            // that.$.overlay.open();
           }
           
           });
+
+        
 
           this.$.ouropgave.addEventListener('pausetimer', function(e){
             //console.log('pauze timer');
@@ -148,14 +176,15 @@
           });
 
           this.$.ouropgave.addEventListener('starttimer', function(e){
-            //console.log('start timer');
+            console.log('start timer');
             that.$.countdown.timer = 1000;
-            that.$.overlay.close();
+            // that.$.overlay.close();
             that.$.countdown.pauze = false;
+
           });
 
           this.$.ouropgave.addEventListener('einde', function(e){
-              that.$.overlay.close();
+              // that.$.overlay.close();
             that.$.quizscenes.selected++;
             var fredRankRef = new Firebase('https://quistar.firebaseio.com/'+that.quizFBId+'/0/plays');
 
@@ -195,7 +224,7 @@
 
         ajaxResponse: function(e){
           this.quizObject = e.detail.response[0];
-          console.log('doet em iet? ',e.detail.response[0]);
+          // console.log('doet em iet? ',e.detail.response[0]);
         }
 
 
