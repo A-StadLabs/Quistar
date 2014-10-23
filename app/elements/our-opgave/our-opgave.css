@@ -80,18 +80,17 @@
 
 
 
-.juisteAntwoord {
-  border: 5px solid red;
-}
-
-
-
+.antwoordSelector .core-selected[vraag] {
+    background: #eee;
+  }
 
 .antwoordSelector {
   display: block;
     padding: 10%;
-
 }
+
+
+
 
 
 .gevraagde {

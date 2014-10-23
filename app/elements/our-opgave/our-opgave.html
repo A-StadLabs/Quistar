@@ -21,11 +21,11 @@
       <h2>{{vraag.vraag}}</h2>
     </div>
 
-    <div end-justified class="antwoordSelector">
-      <core-selector selected="{{selectedAntwoord}}" valueattr="id" on-core-activate="{{geefAntwoord}}" vertical layout center>
-        <div class="antwoordbtn" id="1" juist="{{vraag.juiste}}" antwoord="{{antwoord.antwoord}}">{{ vraag.antwoorden.antwoord1 }}</div>
-        <div class="antwoordbtn" id="2" juist="{{vraag.juiste}}" antwoord="{{antwoord.antwoord}}">{{ vraag.antwoorden.antwoord2 }}</div>
-        <div class="antwoordbtn" id="3" juist="{{vraag.juiste}}" antwoord="{{antwoord.antwoord}}">{{ vraag.antwoorden.antwoord3 }}</div>
+    <div end-justified>
+      <core-selector id="antw" class="antwoordSelector" selected="{{selectedAntwoord}}" valueattr="id" on-core-activate="{{geefAntwoord}}" vertical layout center>
+        <div id="1" juist="{{vraag.juiste}}" antwoord="{{antwoord.antwoord}}" class="antwoordbtn" >{{ vraag.antwoorden.antwoord1 }}</div>
+        <div id="2" juist="{{vraag.juiste}}" antwoord="{{antwoord.antwoord}}" class="antwoordbtn" >{{ vraag.antwoorden.antwoord2 }}</div>
+        <div id="3" juist="{{vraag.juiste}}" antwoord="{{antwoord.antwoord}}" class="antwoordbtn" >{{ vraag.antwoorden.antwoord3 }}</div>
       </core-selector>
     </div>
 </div>
@@ -44,6 +44,7 @@
       ready: function(){
         this.selectedAntwoord = -1;
         this.$.opgaveScenes.selected = 0;
+
       },
       vragenChanged: function(){
         console.log('-------VRAGEN---- ',JSON.stringify(this.vragen));
@@ -54,6 +55,9 @@
         // hier timer pauze
         that.fire('pausetimer');
         that.fire('addscore', {antwoordis: that.selectedAntwoord, juisteis: e.detail.item.attributes[1].value});
+
+
+
 
 setTimeout(function(){ 
         
@@ -67,7 +71,9 @@ setTimeout(function(){
       }
           that.selectedAntwoord = -1;
       }, 1000);
-      }
+      },
+
+
 
       
       

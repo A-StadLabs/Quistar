@@ -75,7 +75,8 @@
     <div vertical layout fit>
     <div horizontal layout center stretch class="top-controls">
       <div flex><core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}"></core-icon-button></div>
-      <div id="tijdloop" horizontal layout center>  <img class="clockje" src="../../images/clockje.svg"> {{huidigetijd}}</div>
+      <div hidden?="{{tijdHidden}}" id="tijdloop" horizontal layout center>  <img class="clockje" src="../../images/clockje.svg"> {{huidigetijd}}</div>
+        <div hidden?="{{isHidden}}" class="points">{{addpunten}}</div>
       <div class="heading" end-justified>{{score}}</div>
     </div>
     <div self-center stretch>
@@ -151,6 +152,10 @@
           this.$.ajaxer.go();
           this.score = 0;
           this.tijd = 1000;
+
+          this.isHidden = true;
+          this.tijdHidden = false;
+            this.addpunten = '';
           var that = this;
           // var lopendetijd = that.$.countdown.timer;
 
@@ -158,11 +163,18 @@
             // console.log('ANtwoord is: ',e.detail.antwoordis,' Juiste is: ', e.detail.juisteis);
             if(e.detail.antwoordis==e.detail.juisteis){
              that.punten = Math.round(that.$.countdown.timer/100);
-            that.score = that.score+that.punten+10;
+            that.score = that.score+that.punten;
+            that.addpunten = '+ ' + that.punten;
             that.score = Math.round(that.score);
+            that.isHidden = false;
+            that.tijdHidden = true;
+            that.fire('ditishetjuiste');
+
             // that.$.overlay.open();
           } else {
             that.punten = 0;
+            that.isHidden = true;
+            that.tijdHidden = false;
             // that.$.overlay.open();
           }
           
@@ -180,6 +192,9 @@
             that.$.countdown.timer = 1000;
             // that.$.overlay.close();
             that.$.countdown.pauze = false;
+            that.addpunten = '';
+                        that.isHidden = true;
+            that.tijdHidden = false;
 
           });
 
@@ -201,6 +216,8 @@
 
         startQuiz: function(){
           this.score = 0;
+          this.tijd = 1000;
+          this.addpunten = '';
           this.$.leaderentry.hidden = false;
           this.$.quizscenes.selected = 1;
           this.$.countdown.timer = 1000;
