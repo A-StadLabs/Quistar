@@ -25,6 +25,13 @@
   text-align: center
 }
 
+.antwoordbtn:active .correct {
+  background-color: blue;
+}
+
+.antwoordbtn:active {
+  background-color: red;
+}
 
 .red[active]{
   color: black;
