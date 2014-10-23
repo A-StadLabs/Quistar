@@ -13,21 +13,23 @@
 
   <template repeat="{{ vraag, i in vragen }}">
     <section id="{{i}}">
-    <div class="opgave">
-      <div class="quizcardcontainer" vertical layout center center-justified flex>
-      <div class="opgaveimgcont" hidden?="{{!vraag.img}}" vertical center-justified><img src="{{vraag.img}}" class="opgaveimage"></div>
-      <div>
+      <div vertical layout end-justified class="canvas">
+
+    <div class="opgave" stretch self-center center-justified>
+      <div class="opgaveimgcont" hidden?="{{!vraag.img}}"><img src="{{vraag.img}}" class="opgaveimage">
+      </div>
       <h2>{{vraag.vraag}}</h2>
-      </div>
-      </div>
     </div>
-    <div>
-      <core-selector id="antwoordSelector" selected="{{selectedAntwoord}}" valueattr="id" on-core-activate="{{geefAntwoord}}" vertical layout center>
-        <core-icon-button id="1" juist="{{vraag.juiste}}" antwoord="{{antwoord.antwoord}}">{{ vraag.antwoorden.antwoord1 }}</core-icon-button>
-        <core-icon-button id="2" juist="{{vraag.juiste}}" antwoord="{{antwoord.antwoord}}">{{ vraag.antwoorden.antwoord2 }}</core-icon-button>
-        <core-icon-button id="3" juist="{{vraag.juiste}}" antwoord="{{antwoord.antwoord}}">{{ vraag.antwoorden.antwoord3 }}</core-icon-button>
+
+    <div end-justified class="antwoordSelector">
+      <core-selector selected="{{selectedAntwoord}}" valueattr="id" on-core-activate="{{geefAntwoord}}" vertical layout center>
+        <div class="antwoordbtn" id="1" juist="{{vraag.juiste}}" antwoord="{{antwoord.antwoord}}">{{ vraag.antwoorden.antwoord1 }}</div>
+        <div class="antwoordbtn" id="2" juist="{{vraag.juiste}}" antwoord="{{antwoord.antwoord}}">{{ vraag.antwoorden.antwoord2 }}</div>
+        <div class="antwoordbtn" id="3" juist="{{vraag.juiste}}" antwoord="{{antwoord.antwoord}}">{{ vraag.antwoorden.antwoord3 }}</div>
       </core-selector>
     </div>
+</div>
+
     </section>
   </template>
 
