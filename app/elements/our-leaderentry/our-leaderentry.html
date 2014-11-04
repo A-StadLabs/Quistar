@@ -11,8 +11,8 @@
    <core-ajax method="POST" id="entryPost" handleAs="json" data url="https://quistar.firebaseio.com/{{quizFBId}}/0/leaderboard.json">
 </core-ajax>
       <input id="naam" value="{{nickname}}">
-      <image-upload id="img1" dataurl="{{showme}}" maxw="100" maxh="100" label="Kies een bestand"></image-upload>
-      <core-icon-button icon="arrow-forward" on-tap="{{addLeaderboard}}">Bewaar mijn score</core-icon-button>
+      <image-upload id="img1" dataurl="{{showme}}" maxw="100" maxh="100" label="Upload een avatar"></image-upload>
+      <div class="button" on-tap="{{addLeaderboard}}">Bewaar mijn score</div>
   </template>
   <script>
 

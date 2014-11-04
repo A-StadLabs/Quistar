@@ -13,9 +13,9 @@
 
   <template repeat="{{ vraag, i in vragen }}">
     <section id="{{i}}">
-      <div vertical layout end-justified class="canvas">
+      <div vertical layout class="canvas">
 
-    <div class="opgave" self-center center-justified>
+    <div class="opgave" horizontal layout center center-justified>
       <div class="opgaveimgcont" hidden?="{{!vraag.img}}"><img src="{{vraag.img}}" class="opgaveimage">
       </div>
       <h2>{{vraag.vraag}}</h2>

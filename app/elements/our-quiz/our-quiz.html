@@ -102,6 +102,50 @@
     <!-- Hier eindigt de quiz, wordt leaderboard getoond -->
 
 
+
+
+    <section>
+    
+    <core-header-panel mode="waterfall" fit>
+
+    <core-toolbar id="backbutton">
+    <div class="core-header" vertical layout>
+      <div><core-icon-button icon="arrow-back" on-tap="{{quizOverzicht}}"></core-icon-button>
+      </div>
+      <div flex class="heading">
+      </div>
+    </div>
+    <div flex horizontal center-justified layout></div>
+    </core-toolbar>
+
+    <div vertical layout center center-justified>
+    <div class="card">
+      <div class="quizcardcontainer" vertical layout center center-justified>
+                          <p class="eindetxt">Einde van de quiz</p>
+
+      <h1>Jouw score: {{score}}</h1>
+
+<our-leaderentry id="leaderentry" score="{{score}}" quizobject="{{quizObject}}" quizId="{{quizId}}" quizFBId="{{quizFBId}}"></our-leaderentry>
+      </div>
+
+
+    </div>
+
+    <div class="leader">
+    <our-leaderboard quizobject="{{quizObject.leaderboard}}" quizFBId="{{quizFBId}}"></our-leaderboard>
+    </div>
+    </div>
+
+    </core-header-panel>
+    </section>
+
+
+
+
+
+
+<!-- 
+
     <section>
 
     <core-toolbar id="backbutton">
@@ -117,9 +161,10 @@
     </core-toolbar>
     
     <div vertical layout center center-justified>
-    <div class="card2">
-    <h2>Jouw score is </h2>
-    <h1 class="scoretag">{{score}}</h1>
+    <div class="card">
+      <div class="quizcardcontainer" vertical layout center center-justified>
+    <h2>Einde van de quiz!</h2>
+    <h1>Jouw score: {{score}}</h1>
     <our-leaderentry id="leaderentry" score="{{score}}" quizobject="{{quizObject}}" quizId="{{quizId}}" quizFBId="{{quizFBId}}"></our-leaderentry>
     <a href="/">Naar overzicht</a>
     </div>
@@ -128,8 +173,18 @@
     <our-leaderboard quizobject="{{quizObject.leaderboard}}" quizId="{{quizFBId}}" quizFBId="{{quizFBId}}"></our-leaderboard>
     </div>
     </div>
-    
+    </div>
+
     </section>
+
+ -->
+
+
+
+
+
+
+
 
 
     </core-animated-pages>
